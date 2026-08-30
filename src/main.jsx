@@ -1,0 +1,208 @@
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { createRoot } from 'react-dom/client';
+import './styles.css';
+
+const STORAGE_KEY = 'hanzi-habit-vocabulary-v1';
+const DEFAULT_SESSION_SIZE = 30;
+
+const blankState = { entries: [], weights: {}, sessionSize: DEFAULT_SESSION_SIZE };
+
+function normaliseSessionSize(value) {
+  return Math.max(1, Math.floor(Number(value) || DEFAULT_SESSION_SIZE));
+}
+
+function storedData() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || blankState;
+    return { ...blankState, ...saved, sessionSize: normaliseSessionSize(saved.sessionSize) };
+  } catch {
+    return blankState;
+  }
+}
+
+function keyFor(id, type) {
+  return `${id}:${type}`;
+}
+
+function pairValues(entry, type) {
+  if (type === 'hanzi-pinyin') return [entry.hanzi, entry.pinyin];
+  if (type === 'hanzi-meaning') return [entry.hanzi, entry.meaning];
+  return [entry.pinyin, entry.meaning];
+}
+
+function vocabularyText(entries) {
+  return entries.map(({ hanzi, pinyin, meaning }) => `${hanzi}, ${pinyin}, ${meaning}`).join('\n');
+}
+
+function buildData(rows) {
+  const prior = storedData();
+  // Hanzi is the durable identity, so editing Pinyin or a translation preserves progress.
+  const uniqueRows = [...new Map(rows.map(([hanzi, pinyin, meaning]) => [hanzi, [hanzi, pinyin, meaning]])).values()];
+  const previousEntriesByHanzi = new Map(prior.entries.map((entry) => [entry.hanzi, entry]));
+  const entries = uniqueRows.map(([hanzi, pinyin, meaning]) => ({ id: hanzi, hanzi, pinyin, meaning }));
+  const weights = {};
+  entries.forEach((entry) => ['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].forEach((type) => {
+    const key = keyFor(entry.id, type);
+    // Also read an old composite ID once, so existing users keep their saved weights.
+    const legacyKey = keyFor(previousEntriesByHanzi.get(entry.hanzi)?.id, type);
+    weights[key] = Math.max(1, Number(prior.weights?.[key]) || Number(prior.weights?.[legacyKey]) || 1);
+  }));
+  return { entries, weights, sessionSize: prior.sessionSize };
+}
+
+function parseVocabulary(text) {
+  return text.split(/\r?\n/).map((line) => line.split(',').map((part) => part.trim()))
+    .filter((parts) => parts.length >= 3 && parts[0] && parts[1] && parts[2])
+    .map((parts) => parts.slice(0, 3));
+}
+
+function makeDeck(data, sessionSize) {
+  const relationships = [];
+  data.entries.forEach((entry) => ['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].forEach((type) => {
+    const relation = { entry, type, key: keyFor(entry.id, type) };
+    relationships.push(relation);
+  }));
+  const totalWeight = relationships.reduce((total, relation) => total + Math.max(1, data.weights[relation.key] || 1), 0);
+
+  return Array.from({ length: sessionSize }, () => {
+    let target = Math.random() * totalWeight;
+    const card = relationships.find((relation) => {
+      target -= Math.max(1, data.weights[relation.key] || 1);
+      return target < 0;
+    }) || relationships[relationships.length - 1];
+    const [first, second] = pairValues(card.entry, card.type);
+    return Math.random() < 0.5 ? { ...card, front: first, back: second } : { ...card, front: second, back: first };
+  });
+}
+
+function App() {
+  const [data, setData] = useState(storedData);
+  const [isImportOpen, setImportOpen] = useState(false);
+  const [input, setInput] = useState('');
+  const [deck, setDeck] = useState([]);
+  const [position, setPosition] = useState(0);
+  const [revealed, setRevealed] = useState(false);
+  const [notice, setNotice] = useState('');
+  const cardRef = useRef(null);
+
+  useEffect(() => localStorage.setItem(STORAGE_KEY, JSON.stringify(data)), [data]);
+
+  const card = deck[position];
+  const remaining = Math.max(0, deck.length - position);
+  const totalRelationships = data.entries.length * 3;
+
+  function loadVocabulary() {
+    const rows = parseVocabulary(input);
+    if (!rows.length) {
+      setNotice('Add one or more complete comma-separated rows first.');
+      return;
+    }
+    setData(buildData(rows));
+    setDeck([]);
+    setNotice(`${rows.length} words loaded and ready to practice.`);
+    setImportOpen(false);
+    setInput(vocabularyText(rows.map(([hanzi, pinyin, meaning]) => ({ hanzi, pinyin, meaning }))));
+  }
+
+  function toggleVocabulary() {
+    if (!isImportOpen) setInput(vocabularyText(data.entries));
+    setImportOpen((open) => !open);
+  }
+
+  function startPractice() {
+    if (!data.entries.length) {
+      setImportOpen(true);
+      setNotice('Load vocabulary before starting a practice session.');
+      return;
+    }
+    setDeck(makeDeck(data, data.sessionSize));
+    setPosition(0);
+    setRevealed(false);
+    setNotice('');
+  }
+
+  function grade(delta) {
+    if (!card) return;
+    setData((current) => ({
+      ...current,
+      weights: { ...current.weights, [card.key]: Math.max(1, (current.weights[card.key] || 1) + delta) },
+    }));
+    setPosition((current) => current + 1);
+    setRevealed(false);
+  }
+
+  function handleArrow(direction) {
+    if (!card) return;
+    if (direction === 'up') setRevealed(true);
+    if (direction === 'left') grade(1);
+    if (direction === 'right') grade(-1);
+  }
+
+  useEffect(() => {
+    function onKeyDown(event) {
+      if (!card || event.target.tagName === 'TEXTAREA' || event.target.tagName === 'INPUT') return;
+      if (event.key === 'ArrowUp') { event.preventDefault(); handleArrow('up'); }
+      if (event.key === 'ArrowLeft') { event.preventDefault(); handleArrow('left'); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); handleArrow('right'); }
+    }
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [card]);
+
+  const relationshipText = useMemo(() => totalRelationships === 1 ? 'relationship' : 'relationships', [totalRelationships]);
+
+  return <main className="app-shell">
+    <header className="topbar">
+      <a className="brand" href="/" onClick={(event) => event.preventDefault()}><span>汉</span> Hanzi Habit</a>
+      <button className="text-button" onClick={toggleVocabulary} aria-expanded={isImportOpen}>
+        {isImportOpen ? 'Close vocabulary' : 'Load vocabulary'}
+      </button>
+    </header>
+
+    <section className="hero">
+    </section>
+
+    {isImportOpen && <section className="import-panel" aria-label="Load vocabulary">
+      <div><p className="panel-kicker">Your vocabulary</p><h2>Paste your word list</h2><p>One word per line: Chinese, Pinyin, meaning</p></div>
+      <textarea value={input} onChange={(event) => setInput(event.target.value)} placeholder={'你好, nǐ hǎo, hello\n谢谢, xiè xie, thank you'} />
+      <button className="primary" onClick={loadVocabulary}>Save vocabulary</button>
+    </section>}
+
+    {notice && <p className="notice" role="status">{notice}</p>}
+
+    {!card && position === 0 && <section className="ready-card">
+      <div className="circle-mark">学</div>
+      <p className="panel-kicker">{data.entries.length ? `${data.entries.length} words · ${totalRelationships} ${relationshipText}` : 'Your personal deck'}</p>
+      <h2>{data.entries.length ? 'Ready when you are.' : 'Start with your words.'}</h2>
+      <p>{data.entries.length ? 'Every connection begins with a weight of one. Your answers shape what comes next.' : 'Load a simple three-column list to create your private practice deck.'}</p>
+      {data.entries.length > 0 && <label className="session-size">Cards this session
+        <input type="number" min="1" value={data.sessionSize} onChange={(event) => setData((current) => ({ ...current, sessionSize: normaliseSessionSize(event.target.value) }))} />
+      </label>}
+      <button className="primary" onClick={startPractice}>{data.entries.length ? 'Begin practice' : 'Load vocabulary'}</button>
+    </section>}
+
+    {card && <section className="practice" ref={cardRef}>
+      <div className="progress-row"><span>Card {position + 1} of {deck.length}</span><span>{remaining} remaining</span></div>
+      <div className={`flashcard ${revealed ? 'is-revealed' : ''}`}>
+        <p className="side-label">{revealed ? 'Answer' : 'Prompt'}</p>
+        <div className="card-value">{revealed ? card.back : card.front}</div>
+        {!revealed && <button className="reveal" onClick={() => setRevealed(true)}>Show answer <kbd>↑</kbd></button>}
+        {revealed && <p className="answer-hint">How well did you know it?</p>}
+      </div>
+      <div className={`mobile-controls ${revealed ? 'is-revealed' : ''}`} aria-label="Card controls">
+        {!revealed ? <button className="arrow-control reveal-control" onClick={() => handleArrow('up')} aria-label="Show answer"><span>↑</span><small>Reveal answer</small></button> : <>
+          <button className="arrow-control less" onClick={() => handleArrow('left')} aria-label="Still learning — raise weight and go to next card"><span>←</span><small>Learning</small></button>
+          <button className="arrow-control more" onClick={() => handleArrow('right')} aria-label="Knew it well — lower weight and go to next card"><span>→</span><small>Known</small></button>
+        </>}
+      </div>
+      <p className="keyboard-help">Use <kbd>↑</kbd> to reveal, then <kbd>←</kbd> or <kbd>→</kbd> to continue.</p>
+    </section>}
+
+    {!card && position > 0 && <section className="complete-card">
+      <p className="panel-kicker">Session complete</p><h2>Nice work.</h2><p>You worked through {deck.length} cards. Your updated weights are safely stored on this device.</p>
+      <button className="primary" onClick={startPractice}>Practice again</button>
+    </section>}
+  </main>;
+}
+
+createRoot(document.getElementById('root')).render(<App />);
