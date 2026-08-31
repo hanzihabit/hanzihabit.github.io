@@ -165,9 +165,6 @@ function App() {
       </div>
     </header>
 
-    <section className="hero">
-    </section>
-
     {isImportOpen && <section className="import-panel" aria-label="Load vocabulary">
       <div><p className="panel-kicker">Your vocabulary</p><h2>Paste your word list</h2><p>One word per line: Chinese, Pinyin, meaning</p></div>
       <textarea value={input} onChange={(event) => setInput(event.target.value)} placeholder={'你好, nǐ hǎo, hello\n谢谢, xiè xie, thank you'} />
