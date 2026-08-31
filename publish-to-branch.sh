@@ -6,6 +6,7 @@ npm run build
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 git checkout $PUBLISH_BRANCH
 rm -rf assets
+rm index.html
 mv $DIST_DIR/* .
 git add assets
 git add index.html
