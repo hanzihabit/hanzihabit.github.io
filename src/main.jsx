@@ -78,6 +78,7 @@ function makeDeck(data, sessionSize) {
 function App() {
   const [data, setData] = useState(storedData);
   const [isImportOpen, setImportOpen] = useState(false);
+  const [isWeightsOpen, setWeightsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [deck, setDeck] = useState([]);
   const [position, setPosition] = useState(0);
@@ -154,9 +155,14 @@ function App() {
   return <main className="app-shell">
     <header className="topbar">
       <a className="brand" href="/" onClick={(event) => event.preventDefault()}><span>汉</span> Hanzi Habit</a>
-      <button className="text-button" onClick={toggleVocabulary} aria-expanded={isImportOpen}>
-        {isImportOpen ? 'Close vocabulary' : 'Load vocabulary'}
-      </button>
+      <div className="header-actions">
+        {data.entries.length > 0 && <button className="text-button" onClick={() => setWeightsOpen((open) => !open)} aria-expanded={isWeightsOpen}>
+          {isWeightsOpen ? 'Close weights' : 'View weights'}
+        </button>}
+        <button className="text-button" onClick={toggleVocabulary} aria-expanded={isImportOpen}>
+          {isImportOpen ? 'Close vocabulary' : 'Load vocabulary'}
+        </button>
+      </div>
     </header>
 
     <section className="hero">
@@ -166,6 +172,21 @@ function App() {
       <div><p className="panel-kicker">Your vocabulary</p><h2>Paste your word list</h2><p>One word per line: Chinese, Pinyin, meaning</p></div>
       <textarea value={input} onChange={(event) => setInput(event.target.value)} placeholder={'你好, nǐ hǎo, hello\n谢谢, xiè xie, thank you'} />
       <button className="primary" onClick={loadVocabulary}>Save vocabulary</button>
+    </section>}
+
+    {isWeightsOpen && <section className="weights-panel" aria-label="Saved relationship weights">
+      <div className="weights-heading"><div><p className="panel-kicker">Your progress</p><h2>Current weights</h2></div><p>Higher weights are selected more often in future practice.</p></div>
+      <div className="weights-list">
+        {data.entries.map((entry) => <article className="weight-card" key={entry.id}>
+          <h3>{entry.hanzi}</h3>
+          <dl>
+            {['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].map((type) => {
+              const labels = { 'hanzi-pinyin': 'Hanzi ↔ Pinyin', 'hanzi-meaning': 'Hanzi ↔ Meaning', 'pinyin-meaning': 'Pinyin ↔ Meaning' };
+              return <div key={type}><dt>{labels[type]}</dt><dd>{data.weights[keyFor(entry.id, type)] || 1}</dd></div>;
+            })}
+          </dl>
+        </article>)}
+      </div>
     </section>}
 
     {notice && <p className="notice" role="status">{notice}</p>}
@@ -200,6 +221,9 @@ function App() {
 
     {!card && position > 0 && <section className="complete-card">
       <p className="panel-kicker">Session complete</p><h2>Nice work.</h2><p>You worked through {deck.length} cards. Your updated weights are safely stored on this device.</p>
+      <label className="session-size">Cards in your next session
+        <input type="number" min="1" value={data.sessionSize} onChange={(event) => setData((current) => ({ ...current, sessionSize: normaliseSessionSize(event.target.value) }))} />
+      </label>
       <button className="primary" onClick={startPractice}>Practice again</button>
     </section>}
   </main>;
