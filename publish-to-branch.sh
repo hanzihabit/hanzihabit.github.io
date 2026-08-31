@@ -12,4 +12,6 @@ git add assets
 git add index.html
 git commit -m "Update published files"
 git push origin $PUBLISH_BRANCH
+rm -rf dist
+rm -rf node_modules
 git checkout $CURRENT_BRANCH
