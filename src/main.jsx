@@ -84,6 +84,8 @@ function App() {
   const [position, setPosition] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [notice, setNotice] = useState('');
+  const [editingWeightId, setEditingWeightId] = useState(null);
+  const [weightDraft, setWeightDraft] = useState({});
   const cardRef = useRef(null);
 
   useEffect(() => localStorage.setItem(STORAGE_KEY, JSON.stringify(data)), [data]);
@@ -110,13 +112,23 @@ function App() {
     setImportOpen((open) => !open);
   }
 
+  function updateSessionSize(value) {
+    setData((current) => ({ ...current, sessionSize: value === '' ? '' : normaliseSessionSize(value) }));
+  }
+
+  function finaliseSessionSize() {
+    setData((current) => ({ ...current, sessionSize: normaliseSessionSize(current.sessionSize) }));
+  }
+
   function startPractice() {
     if (!data.entries.length) {
       setImportOpen(true);
       setNotice('Load vocabulary before starting a practice session.');
       return;
     }
-    setDeck(makeDeck(data, data.sessionSize));
+    const sessionSize = normaliseSessionSize(data.sessionSize);
+    setData((current) => current.sessionSize === sessionSize ? current : { ...current, sessionSize });
+    setDeck(makeDeck(data, sessionSize));
     setPosition(0);
     setRevealed(false);
     setNotice('');
@@ -137,6 +149,38 @@ function App() {
     if (direction === 'up') setRevealed(true);
     if (direction === 'left') grade(1);
     if (direction === 'right') grade(-1);
+  }
+
+  function openWeightEditor(entry) {
+    setEditingWeightId(entry.id);
+    setWeightDraft(Object.fromEntries(['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].map((type) => [type, data.weights[keyFor(entry.id, type)] || 1])));
+  }
+
+  function saveWeights(entry) {
+    setData((current) => ({
+      ...current,
+      weights: {
+        ...current.weights,
+        ...Object.fromEntries(['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].map((type) => [
+          keyFor(entry.id, type), Math.max(1, Math.floor(Number(weightDraft[type]) || 1)),
+        ])),
+      },
+    }));
+    setEditingWeightId(null);
+    setNotice(`Weights saved for ${entry.hanzi}.`);
+  }
+
+  function removeVocabularyEntry(entry) {
+    setData((current) => {
+      const weights = { ...current.weights };
+      ['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].forEach((type) => delete weights[keyFor(entry.id, type)]);
+      return { ...current, entries: current.entries.filter((item) => item.id !== entry.id), weights };
+    });
+    setDeck([]);
+    setPosition(0);
+    setRevealed(false);
+    setEditingWeightId(null);
+    setNotice(`${entry.hanzi} was removed from your vocabulary.`);
   }
 
   useEffect(() => {
@@ -176,12 +220,20 @@ function App() {
       <div className="weights-list">
         {data.entries.map((entry) => <article className="weight-card" key={entry.id}>
           <h3>{entry.hanzi}</h3>
+          <p className="word-details"><span>{entry.pinyin}</span><span>{entry.meaning}</span></p>
           <dl>
             {['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].map((type) => {
               const labels = { 'hanzi-pinyin': 'Hanzi ↔ Pinyin', 'hanzi-meaning': 'Hanzi ↔ Meaning', 'pinyin-meaning': 'Pinyin ↔ Meaning' };
-              return <div key={type}><dt>{labels[type]}</dt><dd>{data.weights[keyFor(entry.id, type)] || 1}</dd></div>;
+              return <div key={type}><dt>{labels[type]}</dt><dd>{editingWeightId === entry.id ? <input aria-label={`${labels[type]} weight`} type="number" min="1" value={weightDraft[type] ?? 1} onChange={(event) => setWeightDraft((current) => ({ ...current, [type]: event.target.value }))} /> : data.weights[keyFor(entry.id, type)] || 1}</dd></div>;
             })}
           </dl>
+          <div className="weight-actions">
+            {editingWeightId === entry.id ? <>
+              <button className="small-button" onClick={() => saveWeights(entry)}>Save weights</button>
+              <button className="small-button muted" onClick={() => setEditingWeightId(null)}>Cancel</button>
+            </> : <button className="small-button" onClick={() => openWeightEditor(entry)}>Edit weights</button>}
+            <button className="small-button remove" onClick={() => removeVocabularyEntry(entry)}>Remove word</button>
+          </div>
         </article>)}
       </div>
     </section>}
@@ -194,7 +246,7 @@ function App() {
       <h2>{data.entries.length ? 'Ready when you are.' : 'Start with your words.'}</h2>
       <p>{data.entries.length ? 'Every connection begins with a weight of one. Your answers shape what comes next.' : 'Load a simple three-column list to create your private practice deck.'}</p>
       {data.entries.length > 0 && <label className="session-size">Cards this session
-        <input type="number" min="1" value={data.sessionSize} onChange={(event) => setData((current) => ({ ...current, sessionSize: normaliseSessionSize(event.target.value) }))} />
+        <input type="number" min="1" value={data.sessionSize} onChange={(event) => updateSessionSize(event.target.value)} onBlur={finaliseSessionSize} />
       </label>}
       <button className="primary" onClick={startPractice}>{data.entries.length ? 'Begin practice' : 'Load vocabulary'}</button>
     </section>}
@@ -219,7 +271,7 @@ function App() {
     {!card && position > 0 && <section className="complete-card">
       <p className="panel-kicker">Session complete</p><h2>Nice work.</h2><p>You worked through {deck.length} cards. Your updated weights are safely stored on this device.</p>
       <label className="session-size">Cards in your next session
-        <input type="number" min="1" value={data.sessionSize} onChange={(event) => setData((current) => ({ ...current, sessionSize: normaliseSessionSize(event.target.value) }))} />
+        <input type="number" min="1" value={data.sessionSize} onChange={(event) => updateSessionSize(event.target.value)} onBlur={finaliseSessionSize} />
       </label>
       <button className="primary" onClick={startPractice}>Practice again</button>
     </section>}
