@@ -30,6 +30,12 @@ function pairValues(entry, type) {
   return [entry.pinyin, entry.meaning];
 }
 
+function remainingValue(entry, type) {
+  if (type === 'hanzi-pinyin') return entry.meaning;
+  if (type === 'hanzi-meaning') return entry.pinyin;
+  return entry.hanzi;
+}
+
 function vocabularyText(entries) {
   return entries.map(({ hanzi, pinyin, meaning }) => `${hanzi}, ${pinyin}, ${meaning}`).join('\n');
 }
@@ -256,6 +262,7 @@ function App() {
       <div className={`flashcard ${revealed ? 'is-revealed' : ''}`}>
         <p className="side-label">{revealed ? 'Answer' : 'Prompt'}</p>
         <div className="card-value">{revealed ? card.back : card.front}</div>
+        {revealed && <p className="card-context">({remainingValue(card.entry, card.type)})</p>}
         {!revealed && <button className="reveal" onClick={() => setRevealed(true)}>Show answer <kbd>↑</kbd></button>}
         {revealed && <p className="answer-hint">How well did you know it?</p>}
       </div>
