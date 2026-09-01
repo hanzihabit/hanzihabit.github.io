@@ -30,6 +30,12 @@ function pairValues(entry, type) {
   return [entry.pinyin, entry.meaning];
 }
 
+function pairLabels(type) {
+  if (type === 'hanzi-pinyin') return ['Hanzi', 'Pinyin'];
+  if (type === 'hanzi-meaning') return ['Hanzi', 'Translation'];
+  return ['Pinyin', 'Translation'];
+}
+
 function remainingValue(entry, type) {
   if (type === 'hanzi-pinyin') return entry.meaning;
   if (type === 'hanzi-meaning') return entry.pinyin;
@@ -77,7 +83,10 @@ function makeDeck(data, sessionSize) {
       return target < 0;
     }) || relationships[relationships.length - 1];
     const [first, second] = pairValues(card.entry, card.type);
-    return Math.random() < 0.5 ? { ...card, front: first, back: second } : { ...card, front: second, back: first };
+    const [firstLabel, secondLabel] = pairLabels(card.type);
+    return Math.random() < 0.5
+      ? { ...card, front: first, back: second, promptLabel: firstLabel, answerLabel: secondLabel }
+      : { ...card, front: second, back: first, promptLabel: secondLabel, answerLabel: firstLabel };
   });
 }
 
@@ -261,6 +270,7 @@ function App() {
       <div className="progress-row"><span>Card {position + 1} of {deck.length}</span><span>{remaining} remaining</span></div>
       <div className={`flashcard ${revealed ? 'is-revealed' : ''}`}>
         <p className="side-label">{revealed ? 'Answer' : 'Prompt'}</p>
+        {!revealed && <p className="expected-answer">Guess the {card.answerLabel}</p>}
         <div className="card-value">{revealed ? card.back : card.front}</div>
         {revealed && <p className="card-context">({remainingValue(card.entry, card.type)})</p>}
         {!revealed && <button className="reveal" onClick={() => setRevealed(true)}>Show answer <kbd>↑</kbd></button>}
