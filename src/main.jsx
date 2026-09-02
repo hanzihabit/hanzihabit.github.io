@@ -92,8 +92,7 @@ function makeDeck(data, sessionSize) {
 
 function App() {
   const [data, setData] = useState(storedData);
-  const [isImportOpen, setImportOpen] = useState(false);
-  const [isWeightsOpen, setWeightsOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('practice');
   const [input, setInput] = useState('');
   const [deck, setDeck] = useState([]);
   const [position, setPosition] = useState(0);
@@ -118,13 +117,13 @@ function App() {
     setData(buildData(rows));
     setDeck([]);
     setNotice(`${rows.length} words loaded and ready to practice.`);
-    setImportOpen(false);
+    setActiveTab('practice');
     setInput(vocabularyText(rows.map(([hanzi, pinyin, meaning]) => ({ hanzi, pinyin, meaning }))));
   }
 
-  function toggleVocabulary() {
-    if (!isImportOpen) setInput(vocabularyText(data.entries));
-    setImportOpen((open) => !open);
+  function selectTab(tab) {
+    if (tab === 'vocabulary') setInput(vocabularyText(data.entries));
+    setActiveTab(tab);
   }
 
   function updateSessionSize(value) {
@@ -137,7 +136,7 @@ function App() {
 
   function startPractice() {
     if (!data.entries.length) {
-      setImportOpen(true);
+      setActiveTab('vocabulary');
       setNotice('Load vocabulary before starting a practice session.');
       return;
     }
@@ -200,37 +199,34 @@ function App() {
 
   useEffect(() => {
     function onKeyDown(event) {
-      if (!card || event.target.tagName === 'TEXTAREA' || event.target.tagName === 'INPUT') return;
+      if (activeTab !== 'practice' || !card || event.target.tagName === 'TEXTAREA' || event.target.tagName === 'INPUT') return;
       if (event.key === 'ArrowUp') { event.preventDefault(); handleArrow('up'); }
       if (event.key === 'ArrowLeft') { event.preventDefault(); handleArrow('left'); }
       if (event.key === 'ArrowRight') { event.preventDefault(); handleArrow('right'); }
     }
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [card]);
+  }, [activeTab, card]);
 
   const relationshipText = useMemo(() => totalRelationships === 1 ? 'relationship' : 'relationships', [totalRelationships]);
 
   return <main className="app-shell">
     <header className="topbar">
       <a className="brand" href="/" onClick={(event) => event.preventDefault()}><span>汉</span> Hanzi Habit</a>
-      <div className="header-actions">
-        {data.entries.length > 0 && <button className="text-button" onClick={() => setWeightsOpen((open) => !open)} aria-expanded={isWeightsOpen}>
-          {isWeightsOpen ? 'Close weights' : 'View weights'}
-        </button>}
-        <button className="text-button" onClick={toggleVocabulary} aria-expanded={isImportOpen}>
-          {isImportOpen ? 'Close vocabulary' : 'Load vocabulary'}
-        </button>
-      </div>
+      <nav className="tabs" aria-label="Main navigation" role="tablist">
+        <button className={`tab ${activeTab === 'vocabulary' ? 'is-active' : ''}`} onClick={() => selectTab('vocabulary')} role="tab" aria-selected={activeTab === 'vocabulary'}>Vocabulary</button>
+        <button className={`tab ${activeTab === 'weights' ? 'is-active' : ''}`} onClick={() => selectTab('weights')} role="tab" aria-selected={activeTab === 'weights'}>Weights</button>
+        <button className={`tab ${activeTab === 'practice' ? 'is-active' : ''}`} onClick={() => selectTab('practice')} role="tab" aria-selected={activeTab === 'practice'}>Practice</button>
+      </nav>
     </header>
 
-    {isImportOpen && <section className="import-panel" aria-label="Load vocabulary">
+    {activeTab === 'vocabulary' && <section className="import-panel" aria-label="Modify vocabulary" role="tabpanel">
       <div><p className="panel-kicker">Your vocabulary</p><h2>Paste your word list</h2><p>One word per line: Chinese, Pinyin, meaning</p></div>
       <textarea value={input} onChange={(event) => setInput(event.target.value)} placeholder={'你好, nǐ hǎo, hello\n谢谢, xiè xie, thank you'} />
       <button className="primary" onClick={loadVocabulary}>Save vocabulary</button>
     </section>}
 
-    {isWeightsOpen && <section className="weights-panel" aria-label="Saved relationship weights">
+    {activeTab === 'weights' && <section className="weights-panel" aria-label="Vocabulary weights" role="tabpanel">
       <div className="weights-heading"><div><p className="panel-kicker">Your progress</p><h2>Current weights</h2></div><p>Higher weights are selected more often in future practice.</p></div>
       <div className="weights-list">
         {data.entries.map((entry) => <article className="weight-card" key={entry.id}>
@@ -253,6 +249,7 @@ function App() {
       </div>
     </section>}
 
+    {activeTab === 'practice' && <>
     {notice && <p className="notice" role="status">{notice}</p>}
 
     {!card && position === 0 && <section className="ready-card">
@@ -292,6 +289,7 @@ function App() {
       </label>
       <button className="primary" onClick={startPractice}>Practice again</button>
     </section>}
+    </>}
   </main>;
 }
 
