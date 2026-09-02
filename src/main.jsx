@@ -18,7 +18,7 @@ const PRELOADED_VOCABULARIES = [
   { id: 'textbook-lessons-1-5', ...textbookLessons1_5 },
   { id: 'textbook-names', ...textbookNames },
 ];
-const TRANSLATIONS_BY_HANZI = new Map(translations.map(({ hanzi, pinyin, EN }) => [hanzi, { hanzi, pinyin, meaning: EN }]));
+const TRANSLATIONS_BY_HANZI = new Map(translations.map(({ hanzi, pinyin, ES }) => [hanzi, { hanzi, pinyin, meaning: ES }]));
 const blankState = { entries: [], manualEntries: [], enabledVocabularyIds: [], wordOverrides: {}, weights: {}, sessionSize: DEFAULT_SESSION_SIZE };
 
 function normaliseSessionSize(value) {
