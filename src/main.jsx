@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
+import locales from '../locales.json';
 import translations from '../vocabularies/Translations.json';
 import numbers from '../vocabularies/Numbers.json';
 import textbookLessons1_5 from '../vocabularies/Textbook_Lessons_1_5.json';
@@ -8,6 +9,9 @@ import textbookNames from '../vocabularies/Textbook_Names.json';
 
 const STORAGE_KEY = 'hanzi-habit-vocabulary-v1';
 const DEFAULT_SESSION_SIZE = 30;
+const DEFAULT_LOCALE = 'ES';
+
+const LOCALE = locales[DEFAULT_LOCALE];
 
 const PRELOADED_VOCABULARIES = [
   { id: 'numbers', ...numbers },
@@ -157,12 +161,12 @@ function App() {
   function loadVocabulary() {
     const rows = parseVocabulary(input);
     if (!rows.length) {
-      setNotice('Add one or more complete comma-separated rows first.');
+      setNotice(`${LOCALE.LOAD_VOCABULARY_FORMAT_NOTICE}.`);
       return;
     }
     setData(buildData(rows));
     setDeck([]);
-    setNotice(`${rows.length} words loaded and ready to practice.`);
+    setNotice(`${rows.length} ${LOCALE.WORDS_LOADED_NOTICE}`);
     setActiveTab('practice');
     setInput(vocabularyText(rows.map(([hanzi, pinyin, meaning]) => ({ hanzi, pinyin, meaning }))));
   }
@@ -185,7 +189,7 @@ function App() {
   function addWord() {
     const word = Object.fromEntries(Object.entries(newWord).map(([key, value]) => [key, value.trim()]));
     if (!word.hanzi || !word.pinyin || !word.meaning) {
-      setNotice('Add Hanzi, Pinyin, and a translation before saving the word.');
+      setNotice(`${LOCALE.ADD_WORD_NOTICE}.`);
       return;
     }
     setData((current) => prepareData({
@@ -193,7 +197,7 @@ function App() {
       manualEntries: [...current.manualEntries.filter((entry) => entry.hanzi !== word.hanzi), word],
     }));
     setNewWord({ hanzi: '', pinyin: '', meaning: '' });
-    setNotice(`${word.hanzi} was added to your vocabulary.`);
+    setNotice(`${word.hanzi} ${LOCALE.WORD_ADDED_NOTICE}`);
   }
 
   function openVocabularyEditor(entry) {
@@ -204,7 +208,7 @@ function App() {
   function saveVocabularyEntry(entry) {
     const word = Object.fromEntries(Object.entries(vocabularyDraft).map(([key, value]) => [key, value.trim()]));
     if (!word.hanzi || !word.pinyin || !word.meaning) {
-      setNotice('Each word needs Hanzi, Pinyin, and a translation.');
+      setNotice(`${LOCALE.SAVE_VOCABULARY_FORMAT_NOTICE}.`);
       return;
     }
     setData((current) => {
@@ -236,7 +240,7 @@ function App() {
     setRevealed(false);
     setEditingVocabularyId(null);
     setEditingWeightId(null);
-    setNotice(`${entry.hanzi} was removed from your vocabulary.`);
+    setNotice(`${entry.hanzi} ${LOCALE.WORD_REMOVED_NOTICE}.`);
   }
 
   function updateSessionSize(value) {
@@ -250,7 +254,7 @@ function App() {
   function startPractice() {
     if (!data.entries.length) {
       setActiveTab('vocabulary');
-      setNotice('Load vocabulary before starting a practice session.');
+      setNotice(`${LOCALE.START_PRACTICE_MISSING_VOCABULARY_NOTICE}.`);
       return;
     }
     const sessionSize = normaliseSessionSize(data.sessionSize);
@@ -308,20 +312,20 @@ function App() {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [activeTab, card]);
 
-  const relationshipText = useMemo(() => totalRelationships === 1 ? 'relationship' : 'relationships', [totalRelationships]);
+  const relationshipText = useMemo(() => totalRelationships === 1 ? LOCALE.RELATIONSHIP : LOCALE.RELATIONSHIPS, [totalRelationships]);
 
   return <main className="app-shell">
     <header className="topbar">
       <a className="brand" href="/" onClick={(event) => event.preventDefault()}><span>汉</span> Hanzi Habit</a>
       <nav className="tabs" aria-label="Main navigation" role="tablist">
-        <button className={`tab ${activeTab === 'vocabulary' ? 'is-active' : ''}`} onClick={() => selectTab('vocabulary')} role="tab" aria-selected={activeTab === 'vocabulary'}>Vocabulary</button>
-        <button className={`tab ${activeTab === 'weights' ? 'is-active' : ''}`} onClick={() => selectTab('weights')} role="tab" aria-selected={activeTab === 'weights'}>Weights</button>
-        <button className={`tab ${activeTab === 'practice' ? 'is-active' : ''}`} onClick={() => selectTab('practice')} role="tab" aria-selected={activeTab === 'practice'}>Practice</button>
+        <button className={`tab ${activeTab === 'vocabulary' ? 'is-active' : ''}`} onClick={() => selectTab('vocabulary')} role="tab" aria-selected={activeTab === 'vocabulary'}>{LOCALE.VOCABULARY}</button>
+        <button className={`tab ${activeTab === 'weights' ? 'is-active' : ''}`} onClick={() => selectTab('weights')} role="tab" aria-selected={activeTab === 'weights'}>{LOCALE.WEIGHTS}</button>
+        <button className={`tab ${activeTab === 'practice' ? 'is-active' : ''}`} onClick={() => selectTab('practice')} role="tab" aria-selected={activeTab === 'practice'}>{LOCALE.PRACTICE}</button>
       </nav>
     </header>
 
     {activeTab === 'vocabulary' && <section className="vocabulary-tab" aria-label="Modify vocabulary" role="tabpanel">
-      <div className="vocabulary-heading"><div><p className="panel-kicker">Your vocabulary</p><h2>Choose what to study</h2><p>Enable a prepared set, then add and tailor your own words below.</p></div></div>
+      <div className="vocabulary-heading"><div><p className="panel-kicker">{LOCALE.YOUR_VOCABULARY}</p><h2>{LOCALE.VOCABULARY_HEADER}</h2><p>{LOCALE.VOCABULARY_SUBTITLE}.</p></div></div>
       <div className="source-list">
         {PRELOADED_VOCABULARIES.map((vocabulary) => {
           const enabled = data.enabledVocabularyIds.includes(vocabulary.id);
@@ -329,9 +333,9 @@ function App() {
           const words = sourceEntries(vocabulary);
           return <article className="source-card" key={vocabulary.id}>
             <div className="source-summary">
-              <button className={`source-enable ${enabled ? 'is-enabled' : ''}`} onClick={() => setVocabularyEnabled(vocabulary.id, !enabled)} aria-pressed={enabled}>{enabled ? 'Enabled' : 'Enable'}</button>
-              <div><h3 style={{ color: vocabulary.pill.color }}>{vocabulary.Name}</h3><p>{words.length} words</p></div>
-              <button className="expand-source" onClick={() => setExpandedVocabularyId(expanded ? null : vocabulary.id)} aria-expanded={expanded} aria-label={`${expanded ? 'Hide' : 'Show'} ${vocabulary.Name} words`}>{expanded ? '⌃' : '⌄'}</button>
+              <button className={`source-enable ${enabled ? 'is-enabled' : ''}`} onClick={() => setVocabularyEnabled(vocabulary.id, !enabled)} aria-pressed={enabled}>{enabled ? LOCALE.ENABLED : LOCALE.ENABLE}</button>
+              <div><h3 style={{ color: vocabulary.pill.color }}>{vocabulary.Name}</h3><p>{words.length} {LOCALE.WORDS}</p></div>
+              <button className="expand-source" onClick={() => setExpandedVocabularyId(expanded ? null : vocabulary.id)} aria-expanded={expanded} aria-label={`${expanded ? LOCALE.HIDE : LOCALE.SHOW} ${vocabulary.Name} words`}>{expanded ? '⌃' : '⌄'}</button>
             </div>
             {expanded && <div className="source-words">
               {words.map((word) => <div key={word.hanzi}><strong>{word.hanzi}</strong><span>{word.pinyin}</span><span>{word.meaning}</span></div>)}
@@ -341,7 +345,7 @@ function App() {
       </div>
 
       <section className="add-word-panel" aria-label="Add a word">
-        <div><p className="panel-kicker">Extra words</p><h2>Add a word</h2></div>
+        <div><p className="panel-kicker">{LOCALE.EXTRA_WORDS}</p><h2>{LOCALE.ADD_A_WORD}</h2></div>
         <div className="word-fields">
           <input aria-label="Hanzi" value={newWord.hanzi} onChange={(event) => setNewWord((current) => ({ ...current, hanzi: event.target.value }))} placeholder="Hanzi" />
           <input aria-label="Pinyin" value={newWord.pinyin} onChange={(event) => setNewWord((current) => ({ ...current, pinyin: event.target.value }))} placeholder="Pinyin" />
@@ -351,7 +355,7 @@ function App() {
       </section>
 
       <section className="current-vocabulary" aria-label="Current vocabulary">
-        <div className="vocabulary-heading"><div><p className="panel-kicker">Current vocabulary</p><h2>{data.entries.length} words ready to practice</h2></div></div>
+        <div className="vocabulary-heading"><div><p className="panel-kicker">{LOCALE.CURRENT_VOCABULARY}</p><h2>{data.entries.length} {LOCALE.N_WORDS_READY}</h2></div></div>
         <div className="current-words">
           {data.entries.map((entry) => <article className="current-word" key={entry.id}>
             {editingVocabularyId === entry.id ? <div className="word-fields editing-fields">
@@ -361,8 +365,8 @@ function App() {
             </div> : <div className="current-word-values"><strong>{entry.hanzi}</strong><span>{entry.pinyin}</span><span>{entry.meaning}</span></div>}
             <VocabularyPills hanzi={entry.hanzi} />
             <div className="word-actions">
-              {editingVocabularyId === entry.id ? <><button className="small-button" onClick={() => saveVocabularyEntry(entry)}>Save</button><button className="small-button muted" onClick={() => setEditingVocabularyId(null)}>Cancel</button></> : <button className="small-button" onClick={() => openVocabularyEditor(entry)}>Edit</button>}
-              <button className="small-button remove" onClick={() => deleteVocabularyEntry(entry)}>Delete</button>
+              {editingVocabularyId === entry.id ? <><button className="small-button" onClick={() => saveVocabularyEntry(entry)}>{LOCALE.SAVE}</button><button className="small-button muted" onClick={() => setEditingVocabularyId(null)}>{LOCALE.CANCEL}</button></> : <button className="small-button" onClick={() => openVocabularyEditor(entry)}>{LOCALE.EDIT}</button>}
+              <button className="small-button remove" onClick={() => deleteVocabularyEntry(entry)}>{LOCALE.DELETE}</button>
             </div>
           </article>)}
         </div>
@@ -371,15 +375,15 @@ function App() {
       <section className="debug-import">
         <button className="debug-toggle" onClick={() => setDebugImportOpen((open) => !open)} aria-expanded={isDebugImportOpen}>Debug: paste vocabulary {isDebugImportOpen ? '⌃' : '⌄'}</button>
         {isDebugImportOpen && <div className="import-panel">
-          <div><p className="panel-kicker">Debug import</p><h2>Paste a word list</h2><p>One word per line: Chinese, Pinyin, meaning</p></div>
+          <div><p className="panel-kicker">{LOCALE.DEBUG_IMPORT}</p><h2>{LOCALE.DEBUG_HEADER}</h2><p>{LOCALE.DEBUG_SUBTITLE}</p></div>
           <textarea value={input} onChange={(event) => setInput(event.target.value)} placeholder={'你好, nǐ hǎo, hello\n谢谢, xiè xie, thank you'} />
-          <button className="primary" onClick={loadVocabulary}>Save vocabulary</button>
+          <button className="primary" onClick={loadVocabulary}>{LOCALE.DEBUG_SAVE}</button>
         </div>}
       </section>
     </section>}
 
     {activeTab === 'weights' && <section className="weights-panel" aria-label="Vocabulary weights" role="tabpanel">
-      <div className="weights-heading"><div><p className="panel-kicker">Your progress</p><h2>Current weights</h2></div><p>Higher weights are selected more often in future practice.</p></div>
+      <div className="weights-heading"><div><p className="panel-kicker">{LOCALE.YOUR_PROGRESS}</p><h2>{LOCALE.CURRENT_WEIGHTS}</h2></div><p>{LOCALE.CURRENT_WEIGHTS_SUBTITLE}</p></div>
       <div className="weights-list">
         {data.entries.map((entry) => <article className="weight-card" key={entry.id}>
           <h3>{entry.hanzi}</h3>
@@ -393,10 +397,10 @@ function App() {
           </dl>
           <div className="weight-actions">
             {editingWeightId === entry.id ? <>
-              <button className="small-button" onClick={() => saveWeights(entry)}>Save weights</button>
-              <button className="small-button muted" onClick={() => setEditingWeightId(null)}>Cancel</button>
-            </> : <button className="small-button" onClick={() => openWeightEditor(entry)}>Edit weights</button>}
-            <button className="small-button remove" onClick={() => deleteVocabularyEntry(entry)}>Remove word</button>
+              <button className="small-button" onClick={() => saveWeights(entry)}>{LOCALE.SAVE}</button>
+              <button className="small-button muted" onClick={() => setEditingWeightId(null)}>{LOCALE.CANCEL}</button>
+            </> : <button className="small-button" onClick={() => openWeightEditor(entry)}>{LOCALE.EDIT_WEIGHTS}</button>}
+            <button className="small-button remove" onClick={() => deleteVocabularyEntry(entry)}>{LOCALE.REMOVE_WORD}</button>
           </div>
         </article>)}
       </div>
@@ -407,40 +411,40 @@ function App() {
 
     {!card && position === 0 && <section className="ready-card">
       <div className="circle-mark">学</div>
-      <p className="panel-kicker">{data.entries.length ? `${data.entries.length} words · ${totalRelationships} ${relationshipText}` : 'Your personal deck'}</p>
-      <h2>{data.entries.length ? 'Ready when you are.' : 'Start with your words.'}</h2>
-      <p>{data.entries.length ? 'Every connection begins with a weight of one. Your answers shape what comes next.' : 'Load a simple three-column list to create your private practice deck.'}</p>
-      {data.entries.length > 0 && <label className="session-size">Cards this session
+      <p className="panel-kicker">{data.entries.length ? `${data.entries.length} ${LOCALE.WORDS} · ${totalRelationships} ${relationshipText}` : LOCALE.PERSONAL_DECK}</p>
+      <h2>{data.entries.length ? LOCALE.READY_WHEN : LOCALE.START_WITH}</h2>
+      <p>{data.entries.length ? LOCALE.WEIGHTS_EXPLAIN : LOCALE.VOCABULARY_EXPLAIN}</p>
+      {data.entries.length > 0 && <label className="session-size">{LOCALE.CARDS_THIS_SESSION}
         <input type="number" min="1" value={data.sessionSize} onChange={(event) => updateSessionSize(event.target.value)} onBlur={finaliseSessionSize} />
       </label>}
-      <button className="primary" onClick={startPractice}>{data.entries.length ? 'Begin practice' : 'Load vocabulary'}</button>
+      <button className="primary" onClick={startPractice}>{data.entries.length ? LOCALE.BEGIN_PRACTICE : LOCALE.LOAD_VOCABULARY}</button>
     </section>}
 
     {card && <section className="practice" ref={cardRef}>
-      <div className="progress-row"><span>Card {position + 1} of {deck.length}</span><span>{remaining} remaining</span></div>
+      <div className="progress-row"><span>{LOCALE.CARD} {position + 1} {LOCALE.OF} {deck.length}</span><span>{remaining} {LOCALE.REMAINING}</span></div>
       <div className={`flashcard ${revealed ? 'is-revealed' : ''}`}>
-        <p className="side-label">{revealed ? 'Answer' : 'Prompt'}</p>
-        {!revealed && <p className="expected-answer">Guess the {card.answerLabel}</p>}
+        <p className="side-label">{revealed ? LOCALE.ANSWER : LOCALE.PROMPT}</p>
+        {!revealed && <p className="expected-answer">{LOCALE.GUESS_THE} {card.answerLabel}</p>}
         <div className="card-value">{revealed ? card.back : card.front}</div>
         {revealed && <p className="card-context">({remainingValue(card.entry, card.type)})</p>}
-        {!revealed && <button className="reveal" onClick={() => setRevealed(true)}>Show answer <kbd>↑</kbd></button>}
-        {revealed && <p className="answer-hint">How well did you know it?</p>}
+        {!revealed && <button className="reveal" onClick={() => setRevealed(true)}>{LOCALE.SHOW_ANSWER} <kbd>↑</kbd></button>}
+        {revealed && <p className="answer-hint">{LOCALE.HOW_WELL}?</p>}
       </div>
       <div className={`mobile-controls ${revealed ? 'is-revealed' : ''}`} aria-label="Card controls">
-        {!revealed ? <button className="arrow-control reveal-control" onClick={() => handleArrow('up')} aria-label="Show answer"><span>↑</span><small>Reveal answer</small></button> : <>
-          <button className="arrow-control less" onClick={() => handleArrow('left')} aria-label="Still learning — raise weight and go to next card"><span>←</span><small>Learning</small></button>
-          <button className="arrow-control more" onClick={() => handleArrow('right')} aria-label="Knew it well — lower weight and go to next card"><span>→</span><small>Known</small></button>
+        {!revealed ? <button className="arrow-control reveal-control" onClick={() => handleArrow('up')} aria-label={LOCALE.SHOW_ANSWER}><span>↑</span><small>{LOCALE.REVEAL}</small></button> : <>
+          <button className="arrow-control less" onClick={() => handleArrow('left')} aria-label={LOCALE.LEARNING}><span>←</span><small>{LOCALE.LEARNING}</small></button>
+          <button className="arrow-control more" onClick={() => handleArrow('right')} aria-label={LOCALE.KNOWN}><span>→</span><small>{LOCALE.KNOWN}</small></button>
         </>}
       </div>
-      <p className="keyboard-help">Use <kbd>↑</kbd> to reveal, then <kbd>←</kbd> or <kbd>→</kbd> to continue.</p>
+      {/* <p className="keyboard-help">Use <kbd>↑</kbd> to reveal, then <kbd>←</kbd> or <kbd>→</kbd> to continue.</p> */}
     </section>}
 
     {!card && position > 0 && <section className="complete-card">
-      <p className="panel-kicker">Session complete</p><h2>Nice work.</h2><p>You worked through {deck.length} cards. Your updated weights are safely stored on this device.</p>
-      <label className="session-size">Cards in your next session
+      <p className="panel-kicker">{LOCALE.SESSION_COMPLETE}</p><h2>{LOCALE.SESSION_COMPLETE_TITLE}</h2><p>{LOCALE.SESSION_COMPLETE_SUBTITLE_1} {deck.length} {LOCALE.SESSION_COMPLETE_SUBTITLE_2}</p>
+      <label className="session-size">{LOCALE.CARDS_NEXT}
         <input type="number" min="1" value={data.sessionSize} onChange={(event) => updateSessionSize(event.target.value)} onBlur={finaliseSessionSize} />
       </label>
-      <button className="primary" onClick={startPractice}>Practice again</button>
+      <button className="primary" onClick={startPractice}>{LOCALE.PRACTICE_AGAIN}</button>
     </section>}
     </>}
   </main>;
