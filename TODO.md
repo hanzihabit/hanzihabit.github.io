@@ -7,7 +7,6 @@
 * ~~Auto vocabulary:~~
     * HSK1
     * HSK2
-    * Top 10 most used
     * ~~Textbook Lessons 1-5~~
     * Textbook Lessons 6-14
     * Textbook Names

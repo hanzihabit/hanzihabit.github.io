@@ -3,14 +3,16 @@ import { createRoot } from 'react-dom/client';
 import './styles.css';
 import translations from '../vocabularies/Translations.json';
 import numbers from '../vocabularies/Numbers.json';
-import textbookLessons from '../vocabularies/Textbook_Lessons_1_5.json';
+import textbookLessons1_5 from '../vocabularies/Textbook_Lessons_1_5.json';
+import textbookNames from '../vocabularies/Textbook_Names.json';
 
 const STORAGE_KEY = 'hanzi-habit-vocabulary-v1';
 const DEFAULT_SESSION_SIZE = 30;
 
 const PRELOADED_VOCABULARIES = [
   { id: 'numbers', ...numbers },
-  { id: 'textbook-lessons-1-5', ...textbookLessons },
+  { id: 'textbook-lessons-1-5', ...textbookLessons1_5 },
+  { id: 'textbook-names', ...textbookNames },
 ];
 const TRANSLATIONS_BY_HANZI = new Map(translations.map(({ hanzi, pinyin, EN }) => [hanzi, { hanzi, pinyin, meaning: EN }]));
 const blankState = { entries: [], manualEntries: [], enabledVocabularyIds: [], wordOverrides: {}, weights: {}, sessionSize: DEFAULT_SESSION_SIZE };

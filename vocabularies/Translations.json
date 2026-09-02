@@ -83,5 +83,14 @@
     { "hanzi": "八", "pinyin": "bā", "EN": "8", "ES": "8" },
     { "hanzi": "九", "pinyin": "jiǔ", "EN": "9", "ES": "9" },
     { "hanzi": "十", "pinyin": "shí", "EN": "10", "ES": "10" },
-    { "hanzi": "百", "pinyin": "bǎi", "EN": "100", "ES": "100" }
+    { "hanzi": "百", "pinyin": "bǎi", "EN": "100", "ES": "100" },
+    { "hanzi": "丁力波", "pinyin": "dīng lì bō", "EN": "dīng lì bō (name)", "ES": "dīng lì bō (nombre)" },
+    { "hanzi": "马大为", "pinyin": "mǎ dà wéi", "EN": "mǎ dà wéi (name)", "ES": "mǎ dà wéi (nombre)" },
+    { "hanzi": "林娜", "pinyin": "lín nà", "EN": "lín nà (name)", "ES": "lín nà (nombre)" },
+    { "hanzi": "宋华", "pinyin": "sòng huá", "EN": "sòng huá (name)", "ES": "sòng huá (nombre)" },
+    { "hanzi": "王小云", "pinyin": "wáng xiǎo yún", "EN": "wáng xiǎo yún (name)", "ES": "wáng xiǎo yún (nombre)" },
+    { "hanzi": "陆雨平", "pinyin": "lù yǔ píng", "EN": "lù yǔ píng (name)", "ES": "lù yǔ píng (nombre)" },
+    { "hanzi": "陈", "pinyin": "chén", "EN": "chén (name)", "ES": "chén (nombre)" },
+    { "hanzi": "张", "pinyin": "zhāng", "EN": "zhāng (name)", "ES": "zhāng (nombre)" },
+    { "hanzi": "楊", "pinyin": "yáng", "EN": "yáng (name)", "ES": "yáng (nombre)" }
 ]
