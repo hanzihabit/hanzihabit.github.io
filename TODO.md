@@ -2,9 +2,9 @@
 
 * Allow the user to choose which kinds of word relationships will appear in a practice session
 * ~~Allow the user to see what word relationship they are expected to know in a card~~
-* Change UI to a tab system
+* ~~Change UI to a tab system~~
 * Multilanguage support (EN/ES)
-* Auto vocabulary:
+* ~~Auto vocabulary:~~
     * HSK1
     * HSK2
     * Top 10 most used

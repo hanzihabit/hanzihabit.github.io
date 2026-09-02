@@ -1,11 +1,19 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
+import translations from '../vocabularies/Translations.json';
+import numbers from '../vocabularies/Numbers.json';
+import textbookLessons from '../vocabularies/Textbook_Lessons_1_5.json';
 
 const STORAGE_KEY = 'hanzi-habit-vocabulary-v1';
 const DEFAULT_SESSION_SIZE = 30;
 
-const blankState = { entries: [], weights: {}, sessionSize: DEFAULT_SESSION_SIZE };
+const PRELOADED_VOCABULARIES = [
+  { id: 'numbers', ...numbers },
+  { id: 'textbook-lessons-1-5', ...textbookLessons },
+];
+const TRANSLATIONS_BY_HANZI = new Map(translations.map(({ hanzi, pinyin, EN }) => [hanzi, { hanzi, pinyin, meaning: EN }]));
+const blankState = { entries: [], manualEntries: [], enabledVocabularyIds: [], wordOverrides: {}, weights: {}, sessionSize: DEFAULT_SESSION_SIZE };
 
 function normaliseSessionSize(value) {
   return Math.max(1, Math.floor(Number(value) || DEFAULT_SESSION_SIZE));
@@ -14,7 +22,8 @@ function normaliseSessionSize(value) {
 function storedData() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || blankState;
-    return { ...blankState, ...saved, sessionSize: normaliseSessionSize(saved.sessionSize) };
+    const manualEntries = saved.manualEntries ?? saved.entries ?? [];
+    return prepareData({ ...blankState, ...saved, manualEntries, sessionSize: normaliseSessionSize(saved.sessionSize) });
   } catch {
     return blankState;
   }
@@ -46,20 +55,50 @@ function vocabularyText(entries) {
   return entries.map(({ hanzi, pinyin, meaning }) => `${hanzi}, ${pinyin}, ${meaning}`).join('\n');
 }
 
+function sourceEntries(vocabulary) {
+  return vocabulary.words.map((hanzi) => TRANSLATIONS_BY_HANZI.get(hanzi)).filter(Boolean);
+}
+
+function vocabulariesForWord(hanzi) {
+  return PRELOADED_VOCABULARIES.filter((vocabulary) => vocabulary.words.includes(hanzi));
+}
+
+function VocabularyPills({ hanzi }) {
+  const vocabularies = vocabulariesForWord(hanzi);
+  if (!vocabularies.length) return null;
+  return <div className="word-source-pills" aria-label="Included vocabularies">
+    {vocabularies.map((vocabulary) => <span className="vocabulary-pill" key={vocabulary.id} style={{ backgroundColor: vocabulary.pill.color, color: vocabulary.pill.textcolor }}>{vocabulary.pill.text}</span>)}
+  </div>;
+}
+
+function composeEntries(data) {
+  const entries = new Map();
+  PRELOADED_VOCABULARIES.filter((vocabulary) => data.enabledVocabularyIds.includes(vocabulary.id)).forEach((vocabulary) => {
+    sourceEntries(vocabulary).forEach((entry) => {
+      const override = data.wordOverrides?.[entry.hanzi];
+      if (override !== null) entries.set(entry.hanzi, override || entry);
+    });
+  });
+  (data.manualEntries || []).forEach((entry) => entries.set(entry.hanzi, entry));
+  return [...entries.values()].map((entry) => ({ ...entry, id: entry.hanzi }));
+}
+
+function prepareData(data) {
+  const entries = composeEntries(data);
+  const weights = { ...data.weights };
+  entries.forEach((entry) => ['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].forEach((type) => {
+    const key = keyFor(entry.id, type);
+    weights[key] = Math.max(1, Number(weights[key]) || 1);
+  }));
+  return { ...data, entries, weights };
+}
+
 function buildData(rows) {
   const prior = storedData();
   // Hanzi is the durable identity, so editing Pinyin or a translation preserves progress.
   const uniqueRows = [...new Map(rows.map(([hanzi, pinyin, meaning]) => [hanzi, [hanzi, pinyin, meaning]])).values()];
-  const previousEntriesByHanzi = new Map(prior.entries.map((entry) => [entry.hanzi, entry]));
-  const entries = uniqueRows.map(([hanzi, pinyin, meaning]) => ({ id: hanzi, hanzi, pinyin, meaning }));
-  const weights = {};
-  entries.forEach((entry) => ['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].forEach((type) => {
-    const key = keyFor(entry.id, type);
-    // Also read an old composite ID once, so existing users keep their saved weights.
-    const legacyKey = keyFor(previousEntriesByHanzi.get(entry.hanzi)?.id, type);
-    weights[key] = Math.max(1, Number(prior.weights?.[key]) || Number(prior.weights?.[legacyKey]) || 1);
-  }));
-  return { entries, weights, sessionSize: prior.sessionSize };
+  const manualEntries = uniqueRows.map(([hanzi, pinyin, meaning]) => ({ hanzi, pinyin, meaning }));
+  return prepareData({ ...prior, manualEntries });
 }
 
 function parseVocabulary(text) {
@@ -94,6 +133,11 @@ function App() {
   const [data, setData] = useState(storedData);
   const [activeTab, setActiveTab] = useState('practice');
   const [input, setInput] = useState('');
+  const [isDebugImportOpen, setDebugImportOpen] = useState(false);
+  const [expandedVocabularyId, setExpandedVocabularyId] = useState(null);
+  const [newWord, setNewWord] = useState({ hanzi: '', pinyin: '', meaning: '' });
+  const [editingVocabularyId, setEditingVocabularyId] = useState(null);
+  const [vocabularyDraft, setVocabularyDraft] = useState({ hanzi: '', pinyin: '', meaning: '' });
   const [deck, setDeck] = useState([]);
   const [position, setPosition] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -124,6 +168,73 @@ function App() {
   function selectTab(tab) {
     if (tab === 'vocabulary') setInput(vocabularyText(data.entries));
     setActiveTab(tab);
+  }
+
+  function setVocabularyEnabled(id, enabled) {
+    setData((current) => prepareData({
+      ...current,
+      enabledVocabularyIds: enabled ? [...current.enabledVocabularyIds, id] : current.enabledVocabularyIds.filter((item) => item !== id),
+    }));
+    setDeck([]);
+    setPosition(0);
+    setRevealed(false);
+  }
+
+  function addWord() {
+    const word = Object.fromEntries(Object.entries(newWord).map(([key, value]) => [key, value.trim()]));
+    if (!word.hanzi || !word.pinyin || !word.meaning) {
+      setNotice('Add Hanzi, Pinyin, and a translation before saving the word.');
+      return;
+    }
+    setData((current) => prepareData({
+      ...current,
+      manualEntries: [...current.manualEntries.filter((entry) => entry.hanzi !== word.hanzi), word],
+    }));
+    setNewWord({ hanzi: '', pinyin: '', meaning: '' });
+    setNotice(`${word.hanzi} was added to your vocabulary.`);
+  }
+
+  function openVocabularyEditor(entry) {
+    setEditingVocabularyId(entry.id);
+    setVocabularyDraft({ hanzi: entry.hanzi, pinyin: entry.pinyin, meaning: entry.meaning });
+  }
+
+  function saveVocabularyEntry(entry) {
+    const word = Object.fromEntries(Object.entries(vocabularyDraft).map(([key, value]) => [key, value.trim()]));
+    if (!word.hanzi || !word.pinyin || !word.meaning) {
+      setNotice('Each word needs Hanzi, Pinyin, and a translation.');
+      return;
+    }
+    setData((current) => {
+      const isManual = current.manualEntries.some((item) => item.hanzi === entry.hanzi);
+      const isRenamed = entry.hanzi !== word.hanzi;
+      const manualEntries = isManual
+        ? current.manualEntries.filter((item) => item.hanzi !== entry.hanzi && item.hanzi !== word.hanzi).concat(word)
+        : isRenamed ? current.manualEntries.filter((item) => item.hanzi !== word.hanzi).concat(word) : current.manualEntries;
+      const wordOverrides = isManual
+        ? current.wordOverrides
+        : { ...current.wordOverrides, [entry.hanzi]: isRenamed ? null : word };
+      return prepareData({ ...current, manualEntries, wordOverrides });
+    });
+    setEditingVocabularyId(null);
+    setNotice(`${word.hanzi} was updated.`);
+  }
+
+  function deleteVocabularyEntry(entry) {
+    setData((current) => {
+      const isManual = current.manualEntries.some((item) => item.hanzi === entry.hanzi);
+      return prepareData({
+        ...current,
+        manualEntries: isManual ? current.manualEntries.filter((item) => item.hanzi !== entry.hanzi) : current.manualEntries,
+        wordOverrides: isManual ? current.wordOverrides : { ...current.wordOverrides, [entry.hanzi]: null },
+      });
+    });
+    setDeck([]);
+    setPosition(0);
+    setRevealed(false);
+    setEditingVocabularyId(null);
+    setEditingWeightId(null);
+    setNotice(`${entry.hanzi} was removed from your vocabulary.`);
   }
 
   function updateSessionSize(value) {
@@ -184,19 +295,6 @@ function App() {
     setNotice(`Weights saved for ${entry.hanzi}.`);
   }
 
-  function removeVocabularyEntry(entry) {
-    setData((current) => {
-      const weights = { ...current.weights };
-      ['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].forEach((type) => delete weights[keyFor(entry.id, type)]);
-      return { ...current, entries: current.entries.filter((item) => item.id !== entry.id), weights };
-    });
-    setDeck([]);
-    setPosition(0);
-    setRevealed(false);
-    setEditingWeightId(null);
-    setNotice(`${entry.hanzi} was removed from your vocabulary.`);
-  }
-
   useEffect(() => {
     function onKeyDown(event) {
       if (activeTab !== 'practice' || !card || event.target.tagName === 'TEXTAREA' || event.target.tagName === 'INPUT') return;
@@ -220,10 +318,62 @@ function App() {
       </nav>
     </header>
 
-    {activeTab === 'vocabulary' && <section className="import-panel" aria-label="Modify vocabulary" role="tabpanel">
-      <div><p className="panel-kicker">Your vocabulary</p><h2>Paste your word list</h2><p>One word per line: Chinese, Pinyin, meaning</p></div>
-      <textarea value={input} onChange={(event) => setInput(event.target.value)} placeholder={'你好, nǐ hǎo, hello\n谢谢, xiè xie, thank you'} />
-      <button className="primary" onClick={loadVocabulary}>Save vocabulary</button>
+    {activeTab === 'vocabulary' && <section className="vocabulary-tab" aria-label="Modify vocabulary" role="tabpanel">
+      <div className="vocabulary-heading"><div><p className="panel-kicker">Your vocabulary</p><h2>Choose what to study</h2><p>Enable a prepared set, then add and tailor your own words below.</p></div></div>
+      <div className="source-list">
+        {PRELOADED_VOCABULARIES.map((vocabulary) => {
+          const enabled = data.enabledVocabularyIds.includes(vocabulary.id);
+          const expanded = expandedVocabularyId === vocabulary.id;
+          const words = sourceEntries(vocabulary);
+          return <article className="source-card" key={vocabulary.id}>
+            <div className="source-summary">
+              <button className={`source-enable ${enabled ? 'is-enabled' : ''}`} onClick={() => setVocabularyEnabled(vocabulary.id, !enabled)} aria-pressed={enabled}>{enabled ? 'Enabled' : 'Enable'}</button>
+              <div><h3 style={{ color: vocabulary.pill.color }}>{vocabulary.Name}</h3><p>{words.length} words</p></div>
+              <button className="expand-source" onClick={() => setExpandedVocabularyId(expanded ? null : vocabulary.id)} aria-expanded={expanded} aria-label={`${expanded ? 'Hide' : 'Show'} ${vocabulary.Name} words`}>{expanded ? '⌃' : '⌄'}</button>
+            </div>
+            {expanded && <div className="source-words">
+              {words.map((word) => <div key={word.hanzi}><strong>{word.hanzi}</strong><span>{word.pinyin}</span><span>{word.meaning}</span></div>)}
+            </div>}
+          </article>;
+        })}
+      </div>
+
+      <section className="add-word-panel" aria-label="Add a word">
+        <div><p className="panel-kicker">Extra words</p><h2>Add a word</h2></div>
+        <div className="word-fields">
+          <input aria-label="Hanzi" value={newWord.hanzi} onChange={(event) => setNewWord((current) => ({ ...current, hanzi: event.target.value }))} placeholder="Hanzi" />
+          <input aria-label="Pinyin" value={newWord.pinyin} onChange={(event) => setNewWord((current) => ({ ...current, pinyin: event.target.value }))} placeholder="Pinyin" />
+          <input aria-label="Translation" value={newWord.meaning} onChange={(event) => setNewWord((current) => ({ ...current, meaning: event.target.value }))} placeholder="Translation" />
+        </div>
+        <button className="primary" onClick={addWord}>Add word</button>
+      </section>
+
+      <section className="current-vocabulary" aria-label="Current vocabulary">
+        <div className="vocabulary-heading"><div><p className="panel-kicker">Current vocabulary</p><h2>{data.entries.length} words ready to practice</h2></div></div>
+        <div className="current-words">
+          {data.entries.map((entry) => <article className="current-word" key={entry.id}>
+            {editingVocabularyId === entry.id ? <div className="word-fields editing-fields">
+              <input aria-label="Hanzi" value={vocabularyDraft.hanzi} onChange={(event) => setVocabularyDraft((current) => ({ ...current, hanzi: event.target.value }))} />
+              <input aria-label="Pinyin" value={vocabularyDraft.pinyin} onChange={(event) => setVocabularyDraft((current) => ({ ...current, pinyin: event.target.value }))} />
+              <input aria-label="Translation" value={vocabularyDraft.meaning} onChange={(event) => setVocabularyDraft((current) => ({ ...current, meaning: event.target.value }))} />
+            </div> : <div className="current-word-values"><strong>{entry.hanzi}</strong><span>{entry.pinyin}</span><span>{entry.meaning}</span></div>}
+            <VocabularyPills hanzi={entry.hanzi} />
+            <div className="word-actions">
+              {editingVocabularyId === entry.id ? <><button className="small-button" onClick={() => saveVocabularyEntry(entry)}>Save</button><button className="small-button muted" onClick={() => setEditingVocabularyId(null)}>Cancel</button></> : <button className="small-button" onClick={() => openVocabularyEditor(entry)}>Edit</button>}
+              <button className="small-button remove" onClick={() => deleteVocabularyEntry(entry)}>Delete</button>
+            </div>
+          </article>)}
+        </div>
+      </section>
+
+      <section className="debug-import">
+        <button className="debug-toggle" onClick={() => setDebugImportOpen((open) => !open)} aria-expanded={isDebugImportOpen}>Debug: paste vocabulary {isDebugImportOpen ? '⌃' : '⌄'}</button>
+        {isDebugImportOpen && <div className="import-panel">
+          <div><p className="panel-kicker">Debug import</p><h2>Paste a word list</h2><p>One word per line: Chinese, Pinyin, meaning</p></div>
+          <textarea value={input} onChange={(event) => setInput(event.target.value)} placeholder={'你好, nǐ hǎo, hello\n谢谢, xiè xie, thank you'} />
+          <button className="primary" onClick={loadVocabulary}>Save vocabulary</button>
+        </div>}
+      </section>
     </section>}
 
     {activeTab === 'weights' && <section className="weights-panel" aria-label="Vocabulary weights" role="tabpanel">
@@ -232,6 +382,7 @@ function App() {
         {data.entries.map((entry) => <article className="weight-card" key={entry.id}>
           <h3>{entry.hanzi}</h3>
           <p className="word-details"><span>{entry.pinyin}</span><span>{entry.meaning}</span></p>
+          <VocabularyPills hanzi={entry.hanzi} />
           <dl>
             {['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].map((type) => {
               const labels = { 'hanzi-pinyin': 'Hanzi ↔ Pinyin', 'hanzi-meaning': 'Hanzi ↔ Meaning', 'pinyin-meaning': 'Pinyin ↔ Meaning' };
@@ -243,7 +394,7 @@ function App() {
               <button className="small-button" onClick={() => saveWeights(entry)}>Save weights</button>
               <button className="small-button muted" onClick={() => setEditingWeightId(null)}>Cancel</button>
             </> : <button className="small-button" onClick={() => openWeightEditor(entry)}>Edit weights</button>}
-            <button className="small-button remove" onClick={() => removeVocabularyEntry(entry)}>Remove word</button>
+            <button className="small-button remove" onClick={() => deleteVocabularyEntry(entry)}>Remove word</button>
           </div>
         </article>)}
       </div>
