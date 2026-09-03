@@ -1,0 +1,1712 @@
+{
+    "vocabularies": [
+        {
+            "id": "family",
+            "Name": "Familiares",
+            "pill": {
+                "text": "Familiares",
+                "color": "#833999",
+                "textcolor": "#e0adf0"
+            }
+        },
+        {
+            "id": "textbook-names",
+            "Name": "Libro: Nombres",
+            "pill": {
+                "text": "Lib: Nombres",
+                "color": "#270233",
+                "textcolor": "#ca45f5"
+            }
+        },
+        {
+            "id": "textbook-lessons-1-5",
+            "Name": "Libro: Lecciones 1-5",
+            "pill": {
+                "text": "Lib: L. 1-5",
+                "color": "#FF5733",
+                "textcolor": "#FFFFFF"
+            }
+        },
+        {
+            "id": "numbers",
+            "Name": "Números 0-100",
+            "pill": {
+                "text": "Números",
+                "color": "#46a2e8",
+                "textcolor": "#03233b"
+            }
+        },
+        {
+            "id": "HSK1",
+            "Name": "HSK 1",
+            "pill": {
+                "text": "HSK 1",
+                "color": "#a31c1c",
+                "textcolor": "#eda8a8"
+            }
+        }
+    ],
+    "words": {
+        "你": {
+            "pinyin": "nǐ",
+            "EN": "you (informal)",
+            "ES": "vos",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "好": {
+            "pinyin": "hǎo",
+            "EN": "good",
+            "ES": "bien",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "吗": {
+            "pinyin": "ma",
+            "EN": "y/n?",
+            "ES": "s/n?",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "我": {
+            "pinyin": "wǒ",
+            "EN": "I",
+            "ES": "yo",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "很": {
+            "pinyin": "hěn",
+            "EN": "very",
+            "ES": "muy",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "也": {
+            "pinyin": "yě",
+            "EN": "also",
+            "ES": "también",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "不": {
+            "pinyin": "bù",
+            "EN": "not",
+            "ES": "no",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "是": {
+            "pinyin": "shì",
+            "EN": "to be",
+            "ES": "ser/estar",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "的": {
+            "pinyin": "de",
+            "EN": "of/'s",
+            "ES": "de",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "在": {
+            "pinyin": "zài",
+            "EN": "at/located",
+            "ES": "en/estar",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "这": {
+            "pinyin": "zhè",
+            "EN": "this",
+            "ES": "este",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "那": {
+            "pinyin": "nà",
+            "EN": "that",
+            "ES": "ese",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "哪": {
+            "pinyin": "nǎ",
+            "EN": "which?",
+            "ES": "cuál?",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "谁": {
+            "pinyin": "shéi",
+            "EN": "who?",
+            "ES": "quién?",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "什么": {
+            "pinyin": "shénme",
+            "EN": "what?",
+            "ES": "qué?",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "呢": {
+            "pinyin": "ne",
+            "EN": "[elliptic ?]",
+            "ES": "[elíptica ?]",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "忙": {
+            "pinyin": "máng",
+            "EN": "busy",
+            "ES": "ocupado",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "爸爸": {
+            "pinyin": "bàba",
+            "EN": "father",
+            "ES": "papá",
+            "vocabularies": [
+                "family",
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "妈妈": {
+            "pinyin": "māma",
+            "EN": "mother",
+            "ES": "mamá",
+            "vocabularies": [
+                "family",
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "他": {
+            "pinyin": "tā",
+            "EN": "he",
+            "ES": "él",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "们": {
+            "pinyin": "men",
+            "EN": "[plural]",
+            "ES": "[plural]",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "都": {
+            "pinyin": "dōu",
+            "EN": "all/both",
+            "ES": "todos/ambos",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "男": {
+            "pinyin": "nán",
+            "EN": "male",
+            "ES": "hombre",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "朋友": {
+            "pinyin": "péngyou",
+            "EN": "friend",
+            "ES": "amigo",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "哥哥": {
+            "pinyin": "gēge",
+            "EN": "older brother",
+            "ES": "hermano mayor",
+            "vocabularies": [
+                "family",
+                "textbook-lessons-1-5"
+            ]
+        },
+        "要": {
+            "pinyin": "yào",
+            "EN": "want",
+            "ES": "querer",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "咖啡": {
+            "pinyin": "kāfēi",
+            "EN": "coffee",
+            "ES": "café",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "弟弟": {
+            "pinyin": "dìdi",
+            "EN": "younger brother",
+            "ES": "hermano menor",
+            "vocabularies": [
+                "family",
+                "textbook-lessons-1-5"
+            ]
+        },
+        "喝": {
+            "pinyin": "hē",
+            "EN": "to drink",
+            "ES": "beber",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "她": {
+            "pinyin": "tā",
+            "EN": "she",
+            "ES": "ella",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "国": {
+            "pinyin": "guó",
+            "EN": "country/realm/state",
+            "ES": "país/reino/estado",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "人": {
+            "pinyin": "rén",
+            "EN": "person",
+            "ES": "persona",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "老师": {
+            "pinyin": "lǎoshī",
+            "EN": "teacher",
+            "ES": "maestro",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "中国": {
+            "pinyin": "zhōngguó",
+            "EN": "China",
+            "ES": "China",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "认识": {
+            "pinyin": "rènshi",
+            "EN": "to know",
+            "ES": "conocer",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "高兴": {
+            "pinyin": "gāoxìng",
+            "EN": "happy/pleased",
+            "ES": "contento/encantado",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "可以": {
+            "pinyin": "kěyǐ",
+            "EN": "can/may (permission)",
+            "ES": "poder (permiso)",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "进来": {
+            "pinyin": "jìnlái",
+            "EN": "to come in",
+            "ES": "entrar",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "来": {
+            "pinyin": "lái",
+            "EN": "to come",
+            "ES": "venir",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "请": {
+            "pinyin": "qǐng",
+            "EN": "please",
+            "ES": "por favor",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "您": {
+            "pinyin": "nín",
+            "EN": "you (polite)",
+            "ES": "usted",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "记者": {
+            "pinyin": "jìzhě",
+            "EN": "journalist",
+            "ES": "periodista",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "请问": {
+            "pinyin": "qǐngwèn",
+            "EN": "may I ask...?",
+            "ES": "podría preguntar...?",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "问": {
+            "pinyin": "wèn",
+            "EN": "to ask",
+            "ES": "preguntar",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "贵姓": {
+            "pinyin": "guìxìng",
+            "EN": "honorable surname",
+            "ES": "honorable apellido",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "姓": {
+            "pinyin": "xìng",
+            "EN": "surname",
+            "ES": "apellido",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "叫": {
+            "pinyin": "jiào",
+            "EN": "to be called",
+            "ES": "llamarse",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "先生": {
+            "pinyin": "xiānsheng",
+            "EN": "Mister",
+            "ES": "Señor",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "语言": {
+            "pinyin": "yǔyán",
+            "EN": "language",
+            "ES": "idioma",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "学院": {
+            "pinyin": "xuéyuàn",
+            "EN": "learning institute",
+            "ES": "instituto educativo",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "学生": {
+            "pinyin": "xuésheng",
+            "EN": "student",
+            "ES": "estudiante",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "学习": {
+            "pinyin": "xuéxí",
+            "EN": "to study",
+            "ES": "estudiar",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "汉语": {
+            "pinyin": "hànyǔ",
+            "EN": "Chinese language",
+            "ES": "idioma chino",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "英国": {
+            "pinyin": "yīngguó",
+            "EN": "England",
+            "ES": "Inglaterra",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "加拿大": {
+            "pinyin": "jiānádà",
+            "EN": "Canada",
+            "ES": "Canadá",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "美国": {
+            "pinyin": "měigúo",
+            "EN": "United States",
+            "ES": "Estados Unidos",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "餐厅": {
+            "pinyin": "cāntīng",
+            "EN": "canteen",
+            "ES": "cantina",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "哪儿": {
+            "pinyin": "nǎr",
+            "EN": "w    ",
+            "ES": "dónde",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "宿舍": {
+            "pinyin": "sùshè",
+            "EN": "dormitory",
+            "ES": "dormitorio estudiantil",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "女": {
+            "pinyin": "nǚ",
+            "EN": "woman",
+            "ES": "mujer",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "坐": {
+            "pinyin": "zuò",
+            "EN": "to sit",
+            "ES": "sentarse",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "谢谢": {
+            "pinyin": "xièxie",
+            "EN": "thank you",
+            "ES": "gracias",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "对不起": {
+            "pinyin": "duìbuqǐ",
+            "EN": "I'm sorry",
+            "ES": "lo siento",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "知道": {
+            "pinyin": "zhīdào",
+            "EN": "to know",
+            "ES": "saber",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "没关系": {
+            "pinyin": "méiguānxi",
+            "EN": "it doesn't matter",
+            "ES": "no importa",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "再见": {
+            "pinyin": "zàijiàn",
+            "EN": "goodbye",
+            "ES": "chau",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "小姐": {
+            "pinyin": "xiǎojiě",
+            "EN": "miss",
+            "ES": "señorita",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "二": {
+            "pinyin": "èr",
+            "EN": "2",
+            "ES": "2",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "numbers",
+                "HSK1"
+            ]
+        },
+        "层": {
+            "pinyin": "céng",
+            "EN": "floor",
+            "ES": "piso",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "〇": {
+            "pinyin": "líng",
+            "EN": "0",
+            "ES": "0",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "numbers"
+            ]
+        },
+        "四": {
+            "pinyin": "sì",
+            "EN": "4",
+            "ES": "4",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "numbers",
+                "HSK1"
+            ]
+        },
+        "号": {
+            "pinyin": "hào",
+            "EN": "number",
+            "ES": "número",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "不用": {
+            "pinyin": "bùyòng",
+            "EN": "no need",
+            "ES": "no hace falta",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "这儿": {
+            "pinyin": "zhèr",
+            "EN": "here",
+            "ES": "aquí",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "晚": {
+            "pinyin": "wǎn",
+            "EN": "late",
+            "ES": "tarde (adverbio)",
+            "vocabularies": [
+                "textbook-lessons-1-5"
+            ]
+        },
+        "了": {
+            "pinyin": "le",
+            "EN": "[end of action particle]",
+            "ES": "[particula de fin de acción]",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1"
+            ]
+        },
+        "一": {
+            "pinyin": "yī",
+            "EN": "1",
+            "ES": "1",
+            "vocabularies": [
+                "numbers",
+                "HSK1"
+            ]
+        },
+        "三": {
+            "pinyin": "sān",
+            "EN": "3",
+            "ES": "3",
+            "vocabularies": [
+                "numbers",
+                "HSK1"
+            ]
+        },
+        "五": {
+            "pinyin": "wǔ",
+            "EN": "5",
+            "ES": "5",
+            "vocabularies": [
+                "numbers",
+                "HSK1"
+            ]
+        },
+        "六": {
+            "pinyin": "liù",
+            "EN": "6",
+            "ES": "6",
+            "vocabularies": [
+                "numbers",
+                "HSK1"
+            ]
+        },
+        "七": {
+            "pinyin": "qī",
+            "EN": "7",
+            "ES": "7",
+            "vocabularies": [
+                "numbers",
+                "HSK1"
+            ]
+        },
+        "八": {
+            "pinyin": "bā",
+            "EN": "8",
+            "ES": "8",
+            "vocabularies": [
+                "numbers",
+                "HSK1"
+            ]
+        },
+        "九": {
+            "pinyin": "jiǔ",
+            "EN": "9",
+            "ES": "9",
+            "vocabularies": [
+                "numbers",
+                "HSK1"
+            ]
+        },
+        "十": {
+            "pinyin": "shí",
+            "EN": "10",
+            "ES": "10",
+            "vocabularies": [
+                "numbers",
+                "HSK1"
+            ]
+        },
+        "百": {
+            "pinyin": "bǎi",
+            "EN": "100",
+            "ES": "100",
+            "vocabularies": [
+                "numbers"
+            ]
+        },
+        "丁​力​波": {
+            "pinyin": "dīng lì bō",
+            "EN": "dīng lì bō (name)",
+            "ES": "dīng lì bō (nombre)",
+            "vocabularies": [
+                "textbook-names"
+            ]
+        },
+        "马大为": {
+            "pinyin": "mǎ dà wéi",
+            "EN": "mǎ dà wéi (name)",
+            "ES": "mǎ dà wéi (nombre)",
+            "vocabularies": [
+                "textbook-names"
+            ]
+        },
+        "林娜": {
+            "pinyin": "lín nà",
+            "EN": "lín nà (name)",
+            "ES": "lín nà (nombre)",
+            "vocabularies": [
+                "textbook-names"
+            ]
+        },
+        "宋华": {
+            "pinyin": "sòng huá",
+            "EN": "sòng huá (name)",
+            "ES": "sòng huá (nombre)",
+            "vocabularies": [
+                "textbook-names"
+            ]
+        },
+        "王小云": {
+            "pinyin": "wáng xiǎo yún",
+            "EN": "wáng xiǎo yún (name)",
+            "ES": "wáng xiǎo yún (nombre)",
+            "vocabularies": [
+                "textbook-names"
+            ]
+        },
+        "陆雨平": {
+            "pinyin": "lù yǔ píng",
+            "EN": "lù yǔ píng (name)",
+            "ES": "lù yǔ píng (nombre)",
+            "vocabularies": [
+                "textbook-names"
+            ]
+        },
+        "陈": {
+            "pinyin": "chén",
+            "EN": "chén (name)",
+            "ES": "chén (nombre)",
+            "vocabularies": [
+                "textbook-names"
+            ]
+        },
+        "张": {
+            "pinyin": "zhāng",
+            "EN": "zhāng (name)",
+            "ES": "zhāng (nombre)",
+            "vocabularies": [
+                "textbook-names"
+            ]
+        },
+        "楊": {
+            "pinyin": "yáng",
+            "EN": "yáng (name)",
+            "ES": "yáng (nombre)",
+            "vocabularies": [
+                "textbook-names"
+            ]
+        },
+        "姐姐": {
+            "pinyin": "jiějie",
+            "EN": "older sister",
+            "ES": "hermana mayor",
+            "vocabularies": [
+                "family"
+            ]
+        },
+        "妹妹": {
+            "pinyin": "mèimei",
+            "EN": "younger sister",
+            "ES": "hermana menor",
+            "vocabularies": [
+                "family"
+            ]
+        },
+        "爷爷": {
+            "pinyin": "yéye",
+            "EN": "paternal grandfather",
+            "ES": "abuelo paterno",
+            "vocabularies": [
+                "family"
+            ]
+        },
+        "奶奶": {
+            "pinyin": "nǎinai",
+            "EN": "paternal grandmother",
+            "ES": "abuela paterna",
+            "vocabularies": [
+                "family"
+            ]
+        },
+        "外公": {
+            "pinyin": "wàigōng",
+            "EN": "maternal grandfather",
+            "ES": "abuelo materno",
+            "vocabularies": [
+                "family"
+            ]
+        },
+        "外婆": {
+            "pinyin": "wàipó",
+            "EN": "maternal grandmother",
+            "ES": "abuela materna",
+            "vocabularies": [
+                "family"
+            ]
+        },
+        "儿子": {
+            "pinyin": "érzi",
+            "EN": "son",
+            "ES": "hijo",
+            "vocabularies": [
+                "family",
+                "HSK1"
+            ]
+        },
+        "女儿": {
+            "pinyin": "nǚér",
+            "EN": "daughter",
+            "ES": "hija",
+            "vocabularies": [
+                "family",
+                "HSK1"
+            ]
+        },
+        "儿女": {
+            "pinyin": "ér nǚ",
+            "EN": "children",
+            "ES": "hijos",
+            "vocabularies": [
+                "family"
+            ]
+        },
+        "丈夫": {
+            "pinyin": "zhàngfu",
+            "EN": "husband",
+            "ES": "esposo",
+            "vocabularies": [
+                "family"
+            ]
+        },
+        "妻子": {
+            "pinyin": "qīzi",
+            "EN": "wife",
+            "ES": "esposa",
+            "vocabularies": [
+                "family"
+            ]
+        },
+        "父母": {
+            "pinyin": "fùmǔ",
+            "EN": "parents",
+            "ES": "padres",
+            "vocabularies": []
+        },
+        "爱": {
+            "pinyin": "ài",
+            "EN": "love",
+            "ES": "amar",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "杯子": {
+            "pinyin": "bēizi",
+            "EN": "cup",
+            "ES": "taza",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "北京": {
+            "pinyin": "Běijīng",
+            "EN": "Beijing",
+            "ES": "Beijing",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "本": {
+            "pinyin": "běn",
+            "EN": "origin, source",
+            "ES": "origen, fuente",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "菜": {
+            "pinyin": "cài",
+            "EN": "vegetable/dish/cuisine",
+            "ES": "verdura/plato/cocina (cultural)",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "茶": {
+            "pinyin": "chá",
+            "EN": "tea",
+            "ES": "té",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "吃": {
+            "pinyin": "chī",
+            "EN": "to eat",
+            "ES": "comer",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "出租车": {
+            "pinyin": "chūzūchē",
+            "EN": "taxi",
+            "ES": "taxi",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "打电话": {
+            "pinyin": "dǎ diànhuà",
+            "EN": "to make a phone call",
+            "ES": "llamar por teléfono",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "点": {
+            "pinyin": "diǎn",
+            "EN": "a little",
+            "ES": "un poco",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "电脑": {
+            "pinyin": "diànnǎo",
+            "EN": "computer",
+            "ES": "computadora",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "电视": {
+            "pinyin": "diànshì",
+            "EN": "television",
+            "ES": "televisión",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "电影": {
+            "pinyin": "diànyǐng",
+            "EN": "movie",
+            "ES": "película",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "东西": {
+            "pinyin": "dōngxi",
+            "EN": "thing, item",
+            "ES": "cosa, artículo",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "读": {
+            "pinyin": "dú",
+            "EN": "to read",
+            "ES": "leer",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "多": {
+            "pinyin": "duō",
+            "EN": "many, much",
+            "ES": "mucho, muchos",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "多少": {
+            "pinyin": "duōshǎo",
+            "EN": "how many/how much",
+            "ES": "cuántos/cuánto",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "大": {
+            "pinyin": "dà",
+            "EN": "big, large",
+            "ES": "grande",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "饭店": {
+            "pinyin": "fàndiàn",
+            "EN": "restaurant/hotel",
+            "ES": "restaurante/hotel",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "飞机": {
+            "pinyin": "fēijī",
+            "EN": "airplane",
+            "ES": "avión",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "分钟": {
+            "pinyin": "fēiji",
+            "EN": "minute",
+            "ES": "minuto",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "个": {
+            "pinyin": "gè",
+            "EN": "[generic measure word]",
+            "ES": "[clasificador genérico]",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "工作": {
+            "pinyin": "gōngzuò",
+            "EN": "work",
+            "ES": "trabajo",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "狗": {
+            "pinyin": "gǒu",
+            "EN": "dog",
+            "ES": "perro",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "和": {
+            "pinyin": "hé",
+            "EN": "and",
+            "ES": "y",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "后面": {
+            "pinyin": "hòumiàn",
+            "EN": "behind",
+            "ES": "detrás",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "回": {
+            "pinyin": "huí",
+            "EN": "to return",
+            "ES": "volver",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "会": {
+            "pinyin": "huì",
+            "EN": "to be able to",
+            "ES": "poder (habilidad)",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "几": {
+            "pinyin": "jǐ",
+            "EN": "how many/how much",
+            "ES": "cuántos/cuánto",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "家": {
+            "pinyin": "jiā",
+            "EN": "house",
+            "ES": "casa",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "今天": {
+            "pinyin": "jīntiān",
+            "EN": "today",
+            "ES": "hoy",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "开": {
+            "pinyin": "kāi",
+            "EN": "to open/to start",
+            "ES": "abrir/empezar",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "看": {
+            "pinyin": "kàn",
+            "EN": "to look at",
+            "ES": "mirar",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "看见": {
+            "pinyin": "kàn jiàn",
+            "EN": "to see",
+            "ES": "ver",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "快": {
+            "pinyin": "kuài",
+            "EN": "fast",
+            "ES": "rápido",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "冷": {
+            "pinyin": "lěng",
+            "EN": "cold",
+            "ES": "frío",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "里": {
+            "pinyin": "lǐ",
+            "EN": "inside",
+            "ES": "dentro",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "买": {
+            "pinyin": "mǎi",
+            "EN": "to buy",
+            "ES": "comprar",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "猫": {
+            "pinyin": "māo",
+            "EN": "cat",
+            "ES": "gato",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "没有": {
+            "pinyin": "méiyǒu",
+            "EN": "not to have",
+            "ES": "no tener",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "米饭": {
+            "pinyin": "mǐfàn",
+            "EN": "rice",
+            "ES": "arroz",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "名字": {
+            "pinyin": "míngzi",
+            "EN": "name",
+            "ES": "nombre",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "明天": {
+            "pinyin": "míngtiān",
+            "EN": "tomorrow",
+            "ES": "mañana",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "能": {
+            "pinyin": "néng",
+            "EN": "to be physically able to",
+            "ES": "poder (posiblidad)",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "年": {
+            "pinyin": "nián",
+            "EN": "year",
+            "ES": "año",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "漂亮": {
+            "pinyin": "piàoliang",
+            "EN": "beautiful",
+            "ES": "bonito",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "苹果": {
+            "pinyin": "píngguǒ",
+            "EN": "apple",
+            "ES": "manzana",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "前面": {
+            "pinyin": "qiánmiàn",
+            "EN": "in front",
+            "ES": "delante",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "钱": {
+            "pinyin": "qián",
+            "EN": "money",
+            "ES": "dinero",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "去": {
+            "pinyin": "qù",
+            "EN": "to go",
+            "ES": "ir",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "热": {
+            "pinyin": "rè",
+            "EN": "hot",
+            "ES": "caliente",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "商店": {
+            "pinyin": "shāngdiàn",
+            "EN": "store",
+            "ES": "tienda",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "少": {
+            "pinyin": "shǎo",
+            "EN": "few",
+            "ES": "pocos",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "上": {
+            "pinyin": "shàng",
+            "EN": "on",
+            "ES": "encima",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "上午": {
+            "pinyin": "shàngwǔ",
+            "EN": "in the morning",
+            "ES": "por la mañana",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "时候": {
+            "pinyin": "shíhou",
+            "EN": "time",
+            "ES": "tiempo",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "书": {
+            "pinyin": "shū",
+            "EN": "book",
+            "ES": "libro",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "水": {
+            "pinyin": "shuǐ",
+            "EN": "water",
+            "ES": "agua",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "水果": {
+            "pinyin": "shuǐguǒ",
+            "EN": "fruit",
+            "ES": "fruta",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "睡觉": {
+            "pinyin": "shuìjiào",
+            "EN": "to sleep",
+            "ES": "dormir",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "说": {
+            "pinyin": "shuō",
+            "EN": "to say",
+            "ES": "decir",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "岁": {
+            "pinyin": "suì",
+            "EN": "year",
+            "ES": "año",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "太": {
+            "pinyin": "tài",
+            "EN": "too",
+            "ES": "demasiado",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "听": {
+            "pinyin": "tīng",
+            "EN": "to listen",
+            "ES": "escuchar",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "同学": {
+            "pinyin": "tóngxué",
+            "EN": "classmate",
+            "ES": "compañero de clase",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "喂": {
+            "pinyin": "wèi",
+            "EN": "hello/hey",
+            "ES": "hola/hey",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "喜欢": {
+            "pinyin": "xǐhuān",
+            "EN": "to like",
+            "ES": "gustar",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "下": {
+            "pinyin": "xià",
+            "EN": "down",
+            "ES": "abajo",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "下午": {
+            "pinyin": "xiàwǔ",
+            "EN": "afternoon",
+            "ES": "tarde (momento del día)",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "下雨": {
+            "pinyin": "xià yǔ",
+            "EN": "to rain",
+            "ES": "llover",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "现在": {
+            "pinyin": "xiànzài",
+            "EN": "now",
+            "ES": "ahora",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "想": {
+            "pinyin": "xiǎng",
+            "EN": "to want",
+            "ES": "querer",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "小": {
+            "pinyin": "xiǎo",
+            "EN": "small",
+            "ES": "pequeño",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "些": {
+            "pinyin": "xiē",
+            "EN": "some",
+            "ES": "algunos",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "写": {
+            "pinyin": "xiě",
+            "EN": "to write",
+            "ES": "escribir",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "星期": {
+            "pinyin": "xīngqī",
+            "EN": "weekday",
+            "ES": "día de la semana",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "学校": {
+            "pinyin": "xuéxiào",
+            "EN": "school",
+            "ES": "escuela",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "一点儿": {
+            "pinyin": "yīdiǎn",
+            "EN": "a little bit",
+            "ES": "un poquito",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "医院": {
+            "pinyin": "yīyuàn",
+            "EN": "hospital",
+            "ES": "hospital",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "衣服": {
+            "pinyin": "yīfu",
+            "EN": "clothes",
+            "ES": "ropa",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "椅子": {
+            "pinyin": "yǐzi",
+            "EN": "chair",
+            "ES": "silla",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "有": {
+            "pinyin": "yǒu",
+            "EN": "to have",
+            "ES": "tener",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "月": {
+            "pinyin": "yuè",
+            "EN": "month",
+            "ES": "mes",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "怎么": {
+            "pinyin": "zěnme",
+            "EN": "how",
+            "ES": "cómo",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "怎么样": {
+            "pinyin": "zěnme yàng",
+            "EN": "how is it",
+            "ES": "cómo está",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "中午": {
+            "pinyin": "zhōngwǔ",
+            "EN": "noon",
+            "ES": "mediodía",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "住": {
+            "pinyin": "zhù",
+            "EN": "to live",
+            "ES": "vivir",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "桌子": {
+            "pinyin": "zhuōzi",
+            "EN": "table",
+            "ES": "mesa",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "字": {
+            "pinyin": "zì",
+            "EN": "character",
+            "ES": "carácter",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "昨天": {
+            "pinyin": "zuótiān",
+            "EN": "yesterday",
+            "ES": "ayer",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "做": {
+            "pinyin": "zuò",
+            "EN": "to do",
+            "ES": "hacer",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "不客气": {
+            "pinyin": "bù kèqi",
+            "EN": "you're welcome",
+            "ES": "de nada",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "天气": {
+            "pinyin": "tiānqì",
+            "EN": "weather",
+            "ES": "clima",
+            "vocabularies": [
+                "HSK1"
+            ]
+        },
+        "医生": {
+            "pinyin": "yīshēng",
+            "EN": "doctor",
+            "ES": "médico",
+            "vocabularies": [
+                "HSK1"
+            ]
+        }
+    }
+}
