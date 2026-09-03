@@ -19,7 +19,12 @@ const PRELOADED_VOCABULARIES = [
   { id: 'textbook-names', ...textbookNames },
 ];
 const TRANSLATIONS_BY_HANZI = new Map(translations.map(({ hanzi, pinyin, ES }) => [hanzi, { hanzi, pinyin, meaning: ES }]));
-const blankState = { entries: [], manualEntries: [], enabledVocabularyIds: [], wordOverrides: {}, weights: {}, sessionSize: DEFAULT_SESSION_SIZE };
+const DEFAULT_SESSION_CONTROLS = {
+  'hanzi-pinyin': true,
+  'hanzi-meaning': true,
+  'pinyin-meaning': true
+};
+const blankState = { entries: [], manualEntries: [], enabledVocabularyIds: [], wordOverrides: {}, weights: {}, sessionSize: DEFAULT_SESSION_SIZE, enabledSessionControls: DEFAULT_SESSION_CONTROLS };
 
 function normaliseSessionSize(value) {
   return Math.max(1, Math.floor(Number(value) || DEFAULT_SESSION_SIZE));
@@ -55,6 +60,10 @@ function remainingValue(entry, type) {
   if (type === 'hanzi-pinyin') return entry.meaning;
   if (type === 'hanzi-meaning') return entry.pinyin;
   return entry.hanzi;
+}
+
+function someEnabledSessionControls(data) {
+  return data.enabledSessionControls['hanzi-pinyin'] || data.enabledSessionControls['hanzi-meaning'] || data.enabledSessionControls['pinyin-meaning'];
 }
 
 function vocabularyText(entries) {
@@ -115,10 +124,12 @@ function parseVocabulary(text) {
 
 function makeDeck(data, sessionSize) {
   const relationships = [];
-  data.entries.forEach((entry) => ['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].forEach((type) => {
-    const relation = { entry, type, key: keyFor(entry.id, type) };
-    relationships.push(relation);
-  }));
+  const allowedTypes = Object.entries(data.enabledSessionControls).filter(([, enabled]) => enabled).map(([type]) => type);
+  data.entries.forEach((entry) => {
+    allowedTypes.forEach((type) => {
+      relationships.push({ entry, type, key: keyFor(entry.id, type) });
+    });
+  });
   const totalWeight = relationships.reduce((total, relation) => total + Math.max(1, data.weights[relation.key] || 1), 0);
 
   return Array.from({ length: sessionSize }, () => {
@@ -180,6 +191,16 @@ function App() {
     setData((current) => prepareData({
       ...current,
       enabledVocabularyIds: enabled ? [...current.enabledVocabularyIds, id] : current.enabledVocabularyIds.filter((item) => item !== id),
+    }));
+    setDeck([]);
+    setPosition(0);
+    setRevealed(false);
+  }
+
+  function setSessionControl(type, enabled) {
+    setData((current) => prepareData({
+      ...current,
+      enabledSessionControls: { ...current.enabledSessionControls, [type]: enabled },
     }));
     setDeck([]);
     setPosition(0);
@@ -391,7 +412,7 @@ function App() {
           <VocabularyPills hanzi={entry.hanzi} />
           <dl>
             {['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].map((type) => {
-              const labels = { 'hanzi-pinyin': 'Hanzi ↔ Pinyin', 'hanzi-meaning': 'Hanzi ↔ Meaning', 'pinyin-meaning': 'Pinyin ↔ Meaning' };
+              const labels = { 'hanzi-pinyin': 'Hanzi ↔ Pinyin', 'hanzi-meaning': `Hanzi ↔ ${LOCALE.MEANING}`, 'pinyin-meaning': `Pinyin ↔ ${LOCALE.MEANING}` };
               return <div key={type}><dt>{labels[type]}</dt><dd>{editingWeightId === entry.id ? <input aria-label={`${labels[type]} weight`} type="number" min="1" value={weightDraft[type] ?? 1} onChange={(event) => setWeightDraft((current) => ({ ...current, [type]: event.target.value }))} /> : data.weights[keyFor(entry.id, type)] || 1}</dd></div>;
             })}
           </dl>
@@ -414,10 +435,19 @@ function App() {
       <p className="panel-kicker">{data.entries.length ? `${data.entries.length} ${LOCALE.WORDS} · ${totalRelationships} ${relationshipText}` : LOCALE.PERSONAL_DECK}</p>
       <h2>{data.entries.length ? LOCALE.READY_WHEN : LOCALE.START_WITH}</h2>
       <p>{data.entries.length ? LOCALE.WEIGHTS_EXPLAIN : LOCALE.VOCABULARY_EXPLAIN}</p>
+      <div className="session-controls">
+        {['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].map((type) => {
+          const labels = { 'hanzi-pinyin': 'Hanzi ↔ Pinyin', 'hanzi-meaning': `Hanzi ↔ ${LOCALE.MEANING}`, 'pinyin-meaning': `Pinyin ↔ ${LOCALE.MEANING}` };
+          const enabled = data.enabledSessionControls[type];
+          return <button className={`source-enable ${enabled ? 'is-enabled' : ''}`} onClick={() => setSessionControl(type, !enabled)} key={type} >{labels[type]}</button>;
+        })}
+      </div>
       {data.entries.length > 0 && <label className="session-size">{LOCALE.CARDS_THIS_SESSION}
         <input type="number" min="1" value={data.sessionSize} onChange={(event) => updateSessionSize(event.target.value)} onBlur={finaliseSessionSize} />
       </label>}
-      <button className="primary" onClick={startPractice}>{data.entries.length ? LOCALE.BEGIN_PRACTICE : LOCALE.LOAD_VOCABULARY}</button>
+      <button className="primary startBtn" onClick={startPractice} disabled={!someEnabledSessionControls(data)}>
+        {data.entries.length ? LOCALE.BEGIN_PRACTICE : LOCALE.LOAD_VOCABULARY}
+      </button>
     </section>}
 
     {card && <section className="practice" ref={cardRef}>
@@ -441,10 +471,19 @@ function App() {
 
     {!card && position > 0 && <section className="complete-card">
       <p className="panel-kicker">{LOCALE.SESSION_COMPLETE}</p><h2>{LOCALE.SESSION_COMPLETE_TITLE}</h2><p>{LOCALE.SESSION_COMPLETE_SUBTITLE_1} {deck.length} {LOCALE.SESSION_COMPLETE_SUBTITLE_2}</p>
+      <div className="session-controls">
+        {['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].map((type) => {
+          const labels = { 'hanzi-pinyin': 'Hanzi ↔ Pinyin', 'hanzi-meaning': `Hanzi ↔ ${LOCALE.MEANING}`, 'pinyin-meaning': `Pinyin ↔ ${LOCALE.MEANING}` };
+          const enabled = data.enabledSessionControls[type];
+          return <button className={`source-enable ${enabled ? 'is-enabled' : ''}`} onClick={() => setSessionControl(type, !enabled)} key={type} >{labels[type]}</button>;
+        })}
+      </div>
       <label className="session-size">{LOCALE.CARDS_NEXT}
         <input type="number" min="1" value={data.sessionSize} onChange={(event) => updateSessionSize(event.target.value)} onBlur={finaliseSessionSize} />
       </label>
-      <button className="primary" onClick={startPractice}>{LOCALE.PRACTICE_AGAIN}</button>
+      <button className="primary startBtn" onClick={startPractice} disabled={!someEnabledSessionControls(data)}>
+        {LOCALE.PRACTICE_AGAIN}
+      </button>
     </section>}
     </>}
   </main>;
