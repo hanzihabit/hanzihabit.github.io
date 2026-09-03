@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import './styles.css';
 import locales from '../locales.json';
 import vocabularyData from '../vocabularies.json';
+import dongChineseImage from '../dongchinese.png';
 
 const STORAGE_KEY = 'hanzi-habit-vocabulary-v1';
 const DEFAULT_SESSION_SIZE = 30;
@@ -78,7 +79,9 @@ function VocabularyPills({ hanzi }) {
   const vocabularies = vocabulariesForWord(hanzi);
   if (!vocabularies.length) return null;
   return <div className="word-source-pills" aria-label="Included vocabularies">
-    {vocabularies.map((vocabulary) => <span className="vocabulary-pill" key={vocabulary.id} style={{ backgroundColor: vocabulary.pill.color, color: vocabulary.pill.textcolor }}>{vocabulary.pill.text}</span>)}
+    {vocabularies.map((vocabulary) => <span className="vocabulary-pill" key={vocabulary.id} style={{ backgroundColor: vocabulary.pill.color, color: vocabulary.pill.textcolor }} title={vocabulary.Name}>
+      {vocabulary.pill.text}
+    </span>)}
   </div>;
 }
 
@@ -137,8 +140,8 @@ function makeDeck(data, sessionSize) {
     const [first, second] = pairValues(card.entry, card.type);
     const [firstLabel, secondLabel] = pairLabels(card.type);
     return Math.random() < 0.5
-      ? { ...card, front: first, back: second, promptLabel: firstLabel, answerLabel: secondLabel }
-      : { ...card, front: second, back: first, promptLabel: secondLabel, answerLabel: firstLabel };
+      ? { ...card, front: first, back: second, promptLabel: firstLabel, answerLabel: secondLabel, hanzi: card.entry.hanzi }
+      : { ...card, front: second, back: first, promptLabel: secondLabel, answerLabel: firstLabel, hanzi: card.entry.hanzi };
   });
 }
 
@@ -454,7 +457,11 @@ function App() {
         <div className="card-value">{revealed ? card.back : card.front}</div>
         {revealed && <p className="card-context">({remainingValue(card.entry, card.type)})</p>}
         {!revealed && <button className="reveal" onClick={() => setRevealed(true)}>{LOCALE.SHOW_ANSWER} <kbd>↑</kbd></button>}
-        {revealed && <p className="answer-hint">{LOCALE.HOW_WELL}?</p>}
+        {revealed && <div className="answer-hint">
+          <p >{LOCALE.HOW_WELL}</p>
+          <a href={`https://www.dong-chinese.com/dictionary/${card.hanzi}`} target="_blank" rel="noopener noreferrer"><img src={dongChineseImage} alt="dongchinese" width="32" height="32" title="Check the character in Dong Chinese!"/></a>
+        </div>
+        }
       </div>
       <div className={`mobile-controls ${revealed ? 'is-revealed' : ''}`} aria-label="Card controls">
         {!revealed ? <button className="arrow-control reveal-control" onClick={() => handleArrow('up')} aria-label={LOCALE.SHOW_ANSWER}><span>↑</span><small>{LOCALE.REVEAL}</small></button> : <>
