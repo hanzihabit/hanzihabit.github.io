@@ -5,18 +5,19 @@
 * ~~Change UI to a tab system~~
 * ~~Multilanguage support (EN/ES)~~ TODO: switch
 * ~~Auto vocabulary:~~
-    * HSK1
+    * ~~HSK1~~
     * HSK2
     * ~~Textbook Lessons 1-5~~
     * Textbook Lessons 6-14
     * ~~Textbook Names~~
     * Professions
-    * Family members
+    * ~~Family members~~
     * Animals
     * Colors
     * School subjects
+    * Countries
     * ~~Numbers~~
-* Choose by vocabulary category
+* ~~Choose by vocabulary category~~
 * ~~Vocabulary add refactor~~
 * Vocabulary/weights wordsearch
 * Disable word

@@ -3,12 +3,13 @@ DIST_DIR="./dist"
 
 npm install
 npm run build
+cp vocabularies.json dist/vocabularies.json
+cp locales.json dist/locales.json
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-mv vocabularies vocabularies-mv
 git checkout $PUBLISH_BRANCH
+mv dist/vocabularies.json vocabularies.json
+mv dist/locales.json locales.json
 rm -rf assets
-rm -rf vocabularies
-mv vocabularies-mv vocabularies
 rm index.html
 mv $DIST_DIR/* .
 git add assets

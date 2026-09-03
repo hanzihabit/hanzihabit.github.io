@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 import locales from '../locales.json';
-import vocabularyData from '../vocabularies/vocabularies.json';
+import vocabularyData from '../vocabularies.json';
 
 const STORAGE_KEY = 'hanzi-habit-vocabulary-v1';
 const DEFAULT_SESSION_SIZE = 30;
