@@ -2,10 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 import locales from '../locales.json';
-import translations from '../vocabularies/Translations.json';
-import numbers from '../vocabularies/Numbers.json';
-import textbookLessons1_5 from '../vocabularies/Textbook_Lessons_1_5.json';
-import textbookNames from '../vocabularies/Textbook_Names.json';
+import vocabularyData from '../vocabularies/vocabularies.json';
 
 const STORAGE_KEY = 'hanzi-habit-vocabulary-v1';
 const DEFAULT_SESSION_SIZE = 30;
@@ -13,12 +10,8 @@ const DEFAULT_LOCALE = 'ES';
 
 const LOCALE = locales[DEFAULT_LOCALE];
 
-const PRELOADED_VOCABULARIES = [
-  { id: 'numbers', ...numbers },
-  { id: 'textbook-lessons-1-5', ...textbookLessons1_5 },
-  { id: 'textbook-names', ...textbookNames },
-];
-const TRANSLATIONS_BY_HANZI = new Map(translations.map(({ hanzi, pinyin, ES }) => [hanzi, { hanzi, pinyin, meaning: ES }]));
+const PRELOADED_VOCABULARIES = vocabularyData.vocabularies;
+const WORDS_BY_HANZI = vocabularyData.words;
 const DEFAULT_SESSION_CONTROLS = {
   'hanzi-pinyin': true,
   'hanzi-meaning': true,
@@ -71,11 +64,14 @@ function vocabularyText(entries) {
 }
 
 function sourceEntries(vocabulary) {
-  return vocabulary.words.map((hanzi) => TRANSLATIONS_BY_HANZI.get(hanzi)).filter(Boolean);
+  return Object.entries(WORDS_BY_HANZI)
+    .filter(([, word]) => word.vocabularies.includes(vocabulary.id))
+    .map(([hanzi, word]) => ({ hanzi, pinyin: word.pinyin, meaning: word[DEFAULT_LOCALE] }));
 }
 
 function vocabulariesForWord(hanzi) {
-  return PRELOADED_VOCABULARIES.filter((vocabulary) => vocabulary.words.includes(hanzi));
+  const word = WORDS_BY_HANZI[hanzi];
+  return PRELOADED_VOCABULARIES.filter((vocabulary) => word?.vocabularies.includes(vocabulary.id));
 }
 
 function VocabularyPills({ hanzi }) {

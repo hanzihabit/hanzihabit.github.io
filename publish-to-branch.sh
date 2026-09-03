@@ -4,11 +4,15 @@ DIST_DIR="./dist"
 npm install
 npm run build
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+mv vocabularies vocabularies-mv
 git checkout $PUBLISH_BRANCH
 rm -rf assets
+rm -rf vocabularies
+mv vocabularies-mv vocabularies
 rm index.html
 mv $DIST_DIR/* .
 git add assets
+git add vocabularies
 git add index.html
 git commit -m "Update published files"
 git push origin $PUBLISH_BRANCH
