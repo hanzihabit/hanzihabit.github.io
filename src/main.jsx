@@ -145,6 +145,22 @@ function makeDeck(data, sessionSize) {
   });
 }
 
+function normalizeToBasicLatin(input) {
+  input = input.toLowerCase().trim()
+  input = input.replace('ā', 'a').replace('á', 'a').replace('ǎ', 'a').replace('à', 'a')
+  input = input.replace('ē', 'e').replace('é', 'e').replace('ě', 'e').replace('è', 'e')
+  input = input.replace('ī', 'i').replace('í', 'i').replace('ǐ', 'i').replace('ì', 'i')
+  input = input.replace('ō', 'o').replace('ó', 'o').replace('ǒ', 'o').replace('ò', 'o')
+  input = input.replace('ū', 'u').replace('ú', 'u').replace('ǔ', 'u').replace('ù', 'u')
+  return input.replace(' ', '').replace("'", '')
+}
+
+function filterWord(word, wordSearch) {
+  const search = normalizeToBasicLatin(wordSearch);
+  if (!search) return true;
+  return normalizeToBasicLatin(word.hanzi).includes(search) || normalizeToBasicLatin(word.pinyin).includes(search) || normalizeToBasicLatin(word.meaning).includes(search);
+}
+
 function App() {
   const [data, setData] = useState(storedData);
   const [activeTab, setActiveTab] = useState('practice');
@@ -160,6 +176,7 @@ function App() {
   const [notice, setNotice] = useState('');
   const [editingWeightId, setEditingWeightId] = useState(null);
   const [weightDraft, setWeightDraft] = useState({});
+  const [wordSearch, setWordSearch] = useState('');
   const cardRef = useRef(null);
 
   useEffect(() => localStorage.setItem(STORAGE_KEY, JSON.stringify(data)), [data]);
@@ -376,8 +393,9 @@ function App() {
 
       <section className="current-vocabulary" aria-label="Current vocabulary">
         <div className="vocabulary-heading"><div><p className="panel-kicker">{LOCALE.CURRENT_VOCABULARY}</p><h2>{data.entries.length} {LOCALE.N_WORDS_READY}</h2></div></div>
+        <div className="wordSearch"><input aria-label="Search words" placeholder="Search words..." value={wordSearch} onChange={(event) => setWordSearch(event.target.value)} /></div>
         <div className="current-words">
-          {data.entries.map((entry) => <article className="current-word" key={entry.id}>
+          {data.entries.filter((entry) => filterWord(entry, wordSearch)).map((entry) => <article className="current-word" key={entry.id}>
             {editingVocabularyId === entry.id ? <div className="word-fields editing-fields">
               <input aria-label="Hanzi" value={vocabularyDraft.hanzi} onChange={(event) => setVocabularyDraft((current) => ({ ...current, hanzi: event.target.value }))} />
               <input aria-label="Pinyin" value={vocabularyDraft.pinyin} onChange={(event) => setVocabularyDraft((current) => ({ ...current, pinyin: event.target.value }))} />
@@ -404,8 +422,9 @@ function App() {
 
     {activeTab === 'weights' && <section className="weights-panel" aria-label="Vocabulary weights" role="tabpanel">
       <div className="weights-heading"><div><p className="panel-kicker">{LOCALE.YOUR_PROGRESS}</p><h2>{LOCALE.CURRENT_WEIGHTS}</h2></div><p>{LOCALE.CURRENT_WEIGHTS_SUBTITLE}</p></div>
+      <div className="wordSearch"><input aria-label="Search words" placeholder="Search words..." value={wordSearch} onChange={(event) => setWordSearch(event.target.value)} /></div>
       <div className="weights-list">
-        {data.entries.map((entry) => <article className="weight-card" key={entry.id}>
+        {data.entries.filter((entry) => filterWord(entry, wordSearch)).map((entry) => <article className="weight-card" key={entry.id}>
           <h3>{entry.hanzi}</h3>
           <p className="word-details"><span>{entry.pinyin}</span><span>{entry.meaning}</span></p>
           <VocabularyPills hanzi={entry.hanzi} />

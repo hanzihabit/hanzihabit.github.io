@@ -19,9 +19,9 @@
     * ~~Numbers~~
 * ~~Choose by vocabulary category~~
 * ~~Vocabulary add refactor~~
-* Vocabulary/weights wordsearch
+* ~~Vocabulary/weights wordsearch~~
 * Disable word
-* Dong Chinese link
+* ~~Dong Chinese link~~
 * Stats seeing:
     * % of cards known in a practice
     * \# of times a word relationship appeared in practice sessions

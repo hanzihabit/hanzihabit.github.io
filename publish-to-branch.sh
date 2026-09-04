@@ -13,7 +13,8 @@ rm -rf assets
 rm index.html
 mv $DIST_DIR/* .
 git add assets
-git add vocabularies
+git add vocabularies.json
+git add locales.json
 git add index.html
 git commit -m "Update published files"
 git push origin $PUBLISH_BRANCH
