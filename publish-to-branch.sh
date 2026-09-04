@@ -1,7 +1,7 @@
 PUBLISH_BRANCH="publish"
 DIST_DIR="./dist"
 
-npm install
+# npm install
 npm run build
 cp vocabularies.json dist/vocabularies.json
 cp locales.json dist/locales.json
