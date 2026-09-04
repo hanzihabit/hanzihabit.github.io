@@ -5,8 +5,8 @@
             "Name": "Familiares",
             "pill": {
                 "text": "Familiares",
-                "color": "#833999",
-                "textcolor": "#e0adf0"
+                "color": "#83E342",
+                "textcolor": "#0E6907"
             }
         },
         {
@@ -14,8 +14,8 @@
             "Name": "Libro: Nombres",
             "pill": {
                 "text": "Lib: Nombres",
-                "color": "#270233",
-                "textcolor": "#ca45f5"
+                "color": "#E34242",
+                "textcolor": "#690707"
             }
         },
         {
@@ -23,8 +23,17 @@
             "Name": "Libro: Lecciones 1-5",
             "pill": {
                 "text": "Lib: L. 1-5",
-                "color": "#FF5733",
-                "textcolor": "#FFFFFF"
+                "color": "#E3A342",
+                "textcolor": "#422F03"
+            }
+        },
+        {
+            "id": "textbook-lessons-6-14",
+            "Name": "Libro: Lecciones 6-14",
+            "pill": {
+                "text": "Lib: L. 6-14",
+                "color": "#FF8AE2",
+                "textcolor": "#E200FF"
             }
         },
         {
@@ -32,8 +41,8 @@
             "Name": "Números 0-100",
             "pill": {
                 "text": "Números",
-                "color": "#46a2e8",
-                "textcolor": "#03233b"
+                "color": "#585927",
+                "textcolor": "#E3D700"
             }
         },
         {
@@ -41,8 +50,17 @@
             "Name": "HSK 1",
             "pill": {
                 "text": "HSK 1",
-                "color": "#a31c1c",
-                "textcolor": "#eda8a8"
+                "color": "#28E8ED",
+                "textcolor": "#00495E"
+            }
+        },
+        {
+            "id": "countries",
+            "Name": "Países",
+            "pill": {
+                "text": "Países",
+                "color": "#28EDAE",
+                "textcolor": "#157D5C"
             }
         }
     ],
@@ -346,7 +364,8 @@
             "ES": "China",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "countries"
             ]
         },
         "认识": {
@@ -515,7 +534,8 @@
             "EN": "England",
             "ES": "Inglaterra",
             "vocabularies": [
-                "textbook-lessons-1-5"
+                "textbook-lessons-1-5",
+                "countries"
             ]
         },
         "加拿大": {
@@ -523,7 +543,8 @@
             "EN": "Canada",
             "ES": "Canadá",
             "vocabularies": [
-                "textbook-lessons-1-5"
+                "textbook-lessons-1-5",
+                "countries"
             ]
         },
         "美国": {
@@ -531,7 +552,8 @@
             "EN": "United States",
             "ES": "Estados Unidos",
             "vocabularies": [
-                "textbook-lessons-1-5"
+                "textbook-lessons-1-5",
+                "countries"
             ]
         },
         "餐厅": {
@@ -1117,7 +1139,7 @@
             ]
         },
         "分钟": {
-            "pinyin": "fēiji",
+            "pinyin": "fēnzhōng",
             "EN": "minute",
             "ES": "minuto",
             "vocabularies": [
@@ -1201,7 +1223,8 @@
             "EN": "today",
             "ES": "hoy",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "textbook-lessons-6-14"
             ]
         },
         "开": {
@@ -1297,7 +1320,8 @@
             "EN": "tomorrow",
             "ES": "mañana",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "textbook-lessons-6-14"
             ]
         },
         "能": {
@@ -1353,7 +1377,8 @@
             "EN": "to go",
             "ES": "ir",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "textbook-lessons-6-14"
             ]
         },
         "热": {
@@ -1401,7 +1426,8 @@
             "EN": "time",
             "ES": "tiempo",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "textbook-lessons-6-14"
             ]
         },
         "书": {
@@ -1441,7 +1467,8 @@
             "EN": "to say",
             "ES": "decir",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "textbook-lessons-6-14"
             ]
         },
         "岁": {
@@ -1457,7 +1484,8 @@
             "EN": "too",
             "ES": "demasiado",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "textbook-lessons-6-14"
             ]
         },
         "听": {
@@ -1521,7 +1549,8 @@
             "EN": "now",
             "ES": "ahora",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "textbook-lessons-6-14"
             ]
         },
         "想": {
@@ -1609,7 +1638,8 @@
             "EN": "to have",
             "ES": "tener",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "textbook-lessons-6-14"
             ]
         },
         "月": {
@@ -1673,7 +1703,8 @@
             "EN": "yesterday",
             "ES": "ayer",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "textbook-lessons-6-14"
             ]
         },
         "做": {
@@ -1697,7 +1728,8 @@
             "EN": "weather",
             "ES": "clima",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "textbook-lessons-6-14"
             ]
         },
         "医生": {
@@ -1705,7 +1737,126 @@
             "EN": "doctor",
             "ES": "médico",
             "vocabularies": [
-                "HSK1"
+                "HSK1" ]
+            },
+        "阿根廷": {
+            "pinyin": "Āgēntíng",
+            "EN": "Argentina",
+            "ES": "Argentina",
+            "vocabularies": [
+                "countries"
+            ]
+        },
+        "德国": {
+            "pinyin": "Déguó",
+            "EN": "Germany",
+            "ES": "Alemania",
+            "vocabularies": [
+                "countries"
+            ]
+        },
+        "俄国": {
+            "pinyin": "Éguó",
+            "EN": "Russia",
+            "ES": "Rusia",
+            "vocabularies": [
+                "countries"
+            ]
+        },
+        "法国": {
+            "pinyin": "Fǎguó",
+            "EN": "France",
+            "ES": "Francia",
+            "vocabularies": [
+                "countries"
+            ]
+        },
+        "日本": {
+            "pinyin": "Rìběn",
+            "EN": "Japan",
+            "ES": "Japón",
+            "vocabularies": [
+                "countries"
+            ]
+        },
+        "游泳": {
+            "pinyin": "yóuyǒng",
+            "EN": "swim",
+            "ES": "nadar",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "京剧": {
+            "pinyin": "jīngjù",
+            "EN": "Peking Opera",
+            "ES": "Ópera de Pekín",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "有意思": {
+            "pinyin": "yǒu yìsi",
+            "EN": "interesting",
+            "ES": "interesante",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "时间": {
+            "pinyin": "shíjiān",
+            "EN": "time",
+            "ES": "tiempo",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "遍": {
+            "pinyin": "biàn",
+            "EN": "[measure word for actions]",
+            "ES": "[clasificador para acciones]",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "恐怕": {
+            "pinyin": "kǒngpà",
+            "EN": "maybe",
+            "ES": "quizás",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "行": {
+            "pinyin": "xíng",
+            "EN": "to go",
+            "ES": "ir",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "打": {
+            "pinyin": "dǎ",
+            "EN": "to play",
+            "ES": "jugar",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "球": {
+            "pinyin": "qiú",
+            "EN": "ball",
+            "ES": "pelota",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "抱歉": {
+            "pinyin": "bàoqiàn",
+            "EN": "sorry",
+            "ES": "lo siento",
+            "vocabularies": [
+                "textbook-lessons-6-14"
             ]
         }
     }

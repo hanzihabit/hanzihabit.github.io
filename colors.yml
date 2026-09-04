@@ -1,0 +1,33 @@
+green:
+  fore: #0E6907
+  back: #83E342
+red:
+  fore: #690707
+  back: #E34242
+orange:
+  fore: #422F03
+  back: #E3A342
+yellow:
+  fore: #585927
+  back: #E3D700
+turquoise:
+  fore: #157D5C
+  back: #28EDAE
+blue:
+  fore: #00495E
+  back: #28E8ED
+french:
+  fore: #0F005E
+  back: #4269FF
+purple:
+  fore: #54007D
+  back: #9842FF
+pink:
+  fore: #E200FF
+  back: #FF8AE2
+black:
+  fore: #5E5E5E
+  back: #D6D6D6
+olive:
+  fore: #034200
+  back: #58A664

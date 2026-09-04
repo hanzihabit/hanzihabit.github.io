@@ -8,14 +8,14 @@
     * ~~HSK1~~
     * HSK2
     * ~~Textbook Lessons 1-5~~
-    * Textbook Lessons 6-14
+    * ~~Textbook Lessons 6-14~~ WIP: adding new words as we advance in class
     * ~~Textbook Names~~
     * Professions
     * ~~Family members~~
     * Animals
     * Colors
     * School subjects
-    * Countries
+    * ~~Countries~~
     * ~~Numbers~~
 * ~~Choose by vocabulary category~~
 * ~~Vocabulary add refactor~~
