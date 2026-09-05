@@ -21,6 +21,7 @@
 * ~~Vocabulary add refactor~~
 * ~~Vocabulary/weights wordsearch~~
 * Disable word
+* Modify words weight by vocabulary
 * ~~Dong Chinese link~~
 * Stats seeing:
     * % of cards known in a practice

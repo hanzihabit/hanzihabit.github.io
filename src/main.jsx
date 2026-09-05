@@ -129,14 +129,17 @@ function makeDeck(data, sessionSize) {
       relationships.push({ entry, type, key: keyFor(entry.id, type) });
     });
   });
-  const totalWeight = relationships.reduce((total, relation) => total + Math.max(1, data.weights[relation.key] || 1), 0);
+  const availableRelationships = [...relationships];
+  const deckSize = Math.min(sessionSize, availableRelationships.length);
 
-  return Array.from({ length: sessionSize }, () => {
+  return Array.from({ length: deckSize }, () => {
+    const totalWeight = availableRelationships.reduce((total, relation) => total + Math.max(1, data.weights[relation.key] || 1), 0);
     let target = Math.random() * totalWeight;
-    const card = relationships.find((relation) => {
+    const cardIndex = availableRelationships.findIndex((relation) => {
       target -= Math.max(1, data.weights[relation.key] || 1);
       return target < 0;
-    }) || relationships[relationships.length - 1];
+    });
+    const [card] = availableRelationships.splice(cardIndex, 1);
     const [first, second] = pairValues(card.entry, card.type);
     const [firstLabel, secondLabel] = pairLabels(card.type);
     return Math.random() < 0.5
@@ -280,6 +283,23 @@ function App() {
     setNotice(`${entry.hanzi} ${LOCALE.WORD_REMOVED_NOTICE}.`);
   }
 
+  function removeWholeVocabulary() {
+    setData(() => prepareData({
+      ...blankState,
+      enabledSessionControls: { ...DEFAULT_SESSION_CONTROLS },
+    }));
+    setDeck([]);
+    setPosition(0);
+    setRevealed(false);
+    setEditingVocabularyId(null);
+    setEditingWeightId(null);
+    setExpandedVocabularyId(null);
+    setInput('');
+    setWordSearch('');
+    setActiveTab('vocabulary');
+    setNotice('Whole vocabulary removed.');
+  }
+
   function updateSessionSize(value) {
     setData((current) => ({ ...current, sessionSize: value === '' ? '' : normaliseSessionSize(value) }));
   }
@@ -411,11 +431,12 @@ function App() {
       </section>
 
       <section className="debug-import">
-        <button className="debug-toggle" onClick={() => setDebugImportOpen((open) => !open)} aria-expanded={isDebugImportOpen}>Debug: paste vocabulary {isDebugImportOpen ? '⌃' : '⌄'}</button>
+        <button className="debug-toggle" onClick={() => setDebugImportOpen((open) => !open)} aria-expanded={isDebugImportOpen}>Debug {isDebugImportOpen ? '⌃' : '⌄'}</button>
         {isDebugImportOpen && <div className="import-panel">
           <div><p className="panel-kicker">{LOCALE.DEBUG_IMPORT}</p><h2>{LOCALE.DEBUG_HEADER}</h2><p>{LOCALE.DEBUG_SUBTITLE}</p></div>
           <textarea value={input} onChange={(event) => setInput(event.target.value)} placeholder={'你好, nǐ hǎo, hello\n谢谢, xiè xie, thank you'} />
           <button className="primary" onClick={loadVocabulary}>{LOCALE.DEBUG_SAVE}</button>
+          <button className="small-button remove" onClick={removeWholeVocabulary}>Remove whole vocabulary</button>
         </div>}
       </section>
     </section>}
