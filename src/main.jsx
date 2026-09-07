@@ -216,6 +216,20 @@ function App() {
     setRevealed(false);
   }
 
+  function adjustVocabularyWeights(vocabulary, delta) {
+    const words = sourceEntries(vocabulary);
+    setData((current) => ({
+      ...current,
+      weights: words.reduce((weights, word) => {
+        ['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].forEach((type) => {
+          const weightKey = keyFor(word.hanzi, type);
+          weights[weightKey] = Math.max(1, (current.weights[weightKey] || 1) + delta);
+        });
+        return weights;
+      }, { ...current.weights }),
+    }));
+  }
+
   function setSessionControl(type, enabled) {
     setData((current) => prepareData({
       ...current,
@@ -395,6 +409,11 @@ function App() {
               <button className="expand-source" onClick={() => setExpandedVocabularyId(expanded ? null : vocabulary.id)} aria-expanded={expanded} aria-label={`${expanded ? LOCALE.HIDE : LOCALE.SHOW} ${vocabulary.Name} words`}>{expanded ? '⌃' : '⌄'}</button>
             </div>
             {expanded && <div className="source-words">
+              <div className="source-weight-actions" style={{ display: 'flex' }}>
+                <span>Adjust all weights</span>
+                <button className="small-button" onClick={() => adjustVocabularyWeights(vocabulary, -1)} aria-label={`Decrease all ${vocabulary.Name} weights by 1`}>- 1</button>
+                <button className="small-button" onClick={() => adjustVocabularyWeights(vocabulary, 1)} aria-label={`Increase all ${vocabulary.Name} weights by 1`}>+ 1</button>
+              </div>
               {words.map((word) => <div key={word.hanzi}><strong>{word.hanzi}</strong><span>{word.pinyin}</span><span>{word.meaning}</span></div>)}
             </div>}
           </article>;
