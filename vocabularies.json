@@ -147,8 +147,8 @@
         },
         "在": {
             "pinyin": "zài",
-            "EN": "at/located",
-            "ES": "en/estar",
+            "EN": "[place/location particle]",
+            "ES": "[partícula de lugar]",
             "vocabularies": [
                 "textbook-lessons-1-5",
                 "HSK1"
@@ -157,7 +157,7 @@
         "这": {
             "pinyin": "zhè",
             "EN": "this",
-            "ES": "este",
+            "ES": "est@",
             "vocabularies": [
                 "textbook-lessons-1-5",
                 "HSK1"
@@ -166,7 +166,7 @@
         "那": {
             "pinyin": "nà",
             "EN": "that",
-            "ES": "ese",
+            "ES": "es@",
             "vocabularies": [
                 "textbook-lessons-1-5",
                 "HSK1"
@@ -247,8 +247,8 @@
         },
         "们": {
             "pinyin": "men",
-            "EN": "[plural]",
-            "ES": "[plural]",
+            "EN": "[plural pronoun]",
+            "ES": "[pronombres plural]",
             "vocabularies": [
                 "textbook-lessons-1-5",
                 "HSK1"
@@ -454,8 +454,8 @@
         },
         "贵姓": {
             "pinyin": "guìxìng",
-            "EN": "honorable surname",
-            "ES": "honorable apellido",
+            "EN": "What's your last name? [formal]",
+            "ES": "Cuál es su apellido? [formal]",
             "vocabularies": [
                 "textbook-lessons-1-5"
             ]
@@ -558,15 +558,15 @@
         },
         "餐厅": {
             "pinyin": "cāntīng",
-            "EN": "canteen",
-            "ES": "cantina",
+            "EN": "canteen/cafeteria",
+            "ES": "cantina/comedor",
             "vocabularies": [
                 "textbook-lessons-1-5"
             ]
         },
         "哪儿": {
             "pinyin": "nǎr",
-            "EN": "w    ",
+            "EN": "where",
             "ES": "dónde",
             "vocabularies": [
                 "textbook-lessons-1-5",
@@ -724,7 +724,7 @@
         "了": {
             "pinyin": "le",
             "EN": "[end of action particle]",
-            "ES": "[particula de fin de acción]",
+            "ES": "[partícula de fin de acción]",
             "vocabularies": [
                 "textbook-lessons-1-5",
                 "HSK1"
@@ -1004,8 +1004,8 @@
         },
         "本": {
             "pinyin": "běn",
-            "EN": "origin, source",
-            "ES": "origen, fuente",
+            "EN": "origin/source/[measure word for books]",
+            "ES": "origen/fuente/[clasificador para libros]",
             "vocabularies": [
                 "HSK1"
             ]
@@ -1052,8 +1052,8 @@
         },
         "点": {
             "pinyin": "diǎn",
-            "EN": "a little",
-            "ES": "un poco",
+            "EN": "a little/hour/o'clock",
+            "ES": "un poco/hora/en punto",
             "vocabularies": [
                 "HSK1"
             ]
@@ -1148,8 +1148,8 @@
         },
         "个": {
             "pinyin": "gè",
-            "EN": "[generic measure word]",
-            "ES": "[clasificador genérico]",
+            "EN": "[general measure word]",
+            "ES": "[clasificador general]",
             "vocabularies": [
                 "HSK1"
             ]
@@ -1196,8 +1196,8 @@
         },
         "会": {
             "pinyin": "huì",
-            "EN": "to be able to",
-            "ES": "poder (habilidad)",
+            "EN": "to be able to (learnt ability)/will",
+            "ES": "poder (habilidad aprendida)/voy a hacer",
             "vocabularies": [
                 "HSK1"
             ]
@@ -1327,7 +1327,7 @@
         "能": {
             "pinyin": "néng",
             "EN": "to be physically able to",
-            "ES": "poder (posiblidad)",
+            "ES": "poder (posibilidad)",
             "vocabularies": [
                 "HSK1"
             ]
@@ -1342,8 +1342,8 @@
         },
         "漂亮": {
             "pinyin": "piàoliang",
-            "EN": "beautiful",
-            "ES": "bonito",
+            "EN": "pretty/beautiful",
+            "ES": "bonito/hermoso",
             "vocabularies": [
                 "HSK1"
             ]
@@ -1400,15 +1400,15 @@
         "少": {
             "pinyin": "shǎo",
             "EN": "few",
-            "ES": "pocos",
+            "ES": "poc@s",
             "vocabularies": [
                 "HSK1"
             ]
         },
         "上": {
             "pinyin": "shàng",
-            "EN": "on",
-            "ES": "encima",
+            "EN": "on/above",
+            "ES": "encima/arriba de",
             "vocabularies": [
                 "HSK1"
             ]
@@ -1423,8 +1423,8 @@
         },
         "时候": {
             "pinyin": "shíhou",
-            "EN": "time",
-            "ES": "tiempo",
+            "EN": "time/moment/period",
+            "ES": "tiempo/momento/período",
             "vocabularies": [
                 "HSK1",
                 "textbook-lessons-6-14"
@@ -1572,7 +1572,7 @@
         "些": {
             "pinyin": "xiē",
             "EN": "some",
-            "ES": "algunos",
+            "ES": "algun@s",
             "vocabularies": [
                 "HSK1"
             ]
@@ -1653,7 +1653,7 @@
         "怎么": {
             "pinyin": "zěnme",
             "EN": "how",
-            "ES": "cómo",
+            "ES": "cómo/de qué manera",
             "vocabularies": [
                 "HSK1"
             ]
@@ -1661,7 +1661,7 @@
         "怎么样": {
             "pinyin": "zěnme yàng",
             "EN": "how is it",
-            "ES": "cómo está",
+            "ES": "cómo está/qué tal",
             "vocabularies": [
                 "HSK1"
             ]
@@ -1709,8 +1709,8 @@
         },
         "做": {
             "pinyin": "zuò",
-            "EN": "to do",
-            "ES": "hacer",
+            "EN": "to do (material things)",
+            "ES": "hacer (cosas materiales)",
             "vocabularies": [
                 "HSK1"
             ]
@@ -1805,8 +1805,8 @@
         },
         "时间": {
             "pinyin": "shíjiān",
-            "EN": "time",
-            "ES": "tiempo",
+            "EN": "free (general sense)",
+            "ES": "tiempo (general)",
             "vocabularies": [
                 "textbook-lessons-6-14"
             ]
@@ -1821,24 +1821,24 @@
         },
         "恐怕": {
             "pinyin": "kǒngpà",
-            "EN": "maybe",
-            "ES": "quizás",
+            "EN": "I'm afraid that",
+            "ES": "me temo que",
             "vocabularies": [
                 "textbook-lessons-6-14"
             ]
         },
         "行": {
             "pinyin": "xíng",
-            "EN": "to go",
-            "ES": "ir",
+            "EN": "Okay/Fine",
+            "ES": "Okay/Bien",
             "vocabularies": [
                 "textbook-lessons-6-14"
             ]
         },
         "打": {
             "pinyin": "dǎ",
-            "EN": "to play",
-            "ES": "jugar",
+            "EN": "to play/manipulate (balls)",
+            "ES": "jugar/manipular (pelotas)",
             "vocabularies": [
                 "textbook-lessons-6-14"
             ]
@@ -1853,8 +1853,8 @@
         },
         "抱歉": {
             "pinyin": "bàoqiàn",
-            "EN": "sorry",
-            "ES": "lo siento",
+            "EN": "sorry (formal)",
+            "ES": "lo siento (formal)",
             "vocabularies": [
                 "textbook-lessons-6-14"
             ]
