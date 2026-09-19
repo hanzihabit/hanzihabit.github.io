@@ -1136,3 +1136,7 @@ kbd {
         width: 100%;
     }
 }
+
+.hanzi-cursive {
+    font-family: cursive !important;
+}

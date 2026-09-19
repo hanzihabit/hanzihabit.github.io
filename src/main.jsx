@@ -143,8 +143,8 @@ function makeDeck(data, sessionSize) {
     const [first, second] = pairValues(card.entry, card.type);
     const [firstLabel, secondLabel] = pairLabels(card.type);
     return Math.random() < 0.5
-      ? { ...card, front: first, back: second, promptLabel: firstLabel, answerLabel: secondLabel, hanzi: card.entry.hanzi }
-      : { ...card, front: second, back: first, promptLabel: secondLabel, answerLabel: firstLabel, hanzi: card.entry.hanzi };
+      ? { ...card, front: first, back: second, promptLabel: firstLabel, answerLabel: secondLabel, hanzi: card.entry.hanzi, isHanzi: first === card.entry.hanzi ? "front" : second === card.entry.hanzi ? "back" : "none" }
+      : { ...card, front: second, back: first, promptLabel: secondLabel, answerLabel: firstLabel, hanzi: card.entry.hanzi, isHanzi: first === card.entry.hanzi ? "back" : second === card.entry.hanzi ? "front" : "none" };
   });
 }
 
@@ -414,7 +414,7 @@ function App() {
                 <button className="small-button" onClick={() => adjustVocabularyWeights(vocabulary, -1)} aria-label={`Decrease all ${vocabulary.Name} weights by 1`}>- 1</button>
                 <button className="small-button" onClick={() => adjustVocabularyWeights(vocabulary, 1)} aria-label={`Increase all ${vocabulary.Name} weights by 1`}>+ 1</button>
               </div>
-              {words.map((word) => <div key={word.hanzi}><strong>{word.hanzi}</strong><span>{word.pinyin}</span><span>{word.meaning}</span></div>)}
+              {words.map((word) => <div key={word.hanzi}><strong className="hanzi-cursive">{word.hanzi}</strong><span>{word.pinyin}</span><span>{word.meaning}</span></div>)}
             </div>}
           </article>;
         })}
@@ -439,7 +439,7 @@ function App() {
               <input aria-label="Hanzi" value={vocabularyDraft.hanzi} onChange={(event) => setVocabularyDraft((current) => ({ ...current, hanzi: event.target.value }))} />
               <input aria-label="Pinyin" value={vocabularyDraft.pinyin} onChange={(event) => setVocabularyDraft((current) => ({ ...current, pinyin: event.target.value }))} />
               <input aria-label="Translation" value={vocabularyDraft.meaning} onChange={(event) => setVocabularyDraft((current) => ({ ...current, meaning: event.target.value }))} />
-            </div> : <div className="current-word-values"><strong>{entry.hanzi}</strong><span>{entry.pinyin}</span><span>{entry.meaning}</span></div>}
+            </div> : <div className="current-word-values"><strong className="hanzi-cursive">{entry.hanzi}</strong><span>{entry.pinyin}</span><span>{entry.meaning}</span></div>}
             <VocabularyPills hanzi={entry.hanzi} />
             <div className="word-actions">
               {editingVocabularyId === entry.id ? <><button className="small-button" onClick={() => saveVocabularyEntry(entry)}>{LOCALE.SAVE}</button><button className="small-button muted" onClick={() => setEditingVocabularyId(null)}>{LOCALE.CANCEL}</button></> : <button className="small-button" onClick={() => openVocabularyEditor(entry)}>{LOCALE.EDIT}</button>}
@@ -465,7 +465,7 @@ function App() {
       <div className="wordSearch"><input aria-label="Search words" placeholder="Search words..." value={wordSearch} onChange={(event) => setWordSearch(event.target.value)} /></div>
       <div className="weights-list">
         {data.entries.filter((entry) => filterWord(entry, wordSearch)).map((entry) => <article className="weight-card" key={entry.id}>
-          <h3>{entry.hanzi}</h3>
+          <h3 className="hanzi-cursive">{entry.hanzi}</h3>
           <p className="word-details"><span>{entry.pinyin}</span><span>{entry.meaning}</span></p>
           <VocabularyPills hanzi={entry.hanzi} />
           <dl>
@@ -513,7 +513,7 @@ function App() {
       <div className={`flashcard ${revealed ? 'is-revealed' : ''}`}>
         <p className="side-label">{revealed ? LOCALE.ANSWER : LOCALE.PROMPT}</p>
         {!revealed && <p className="expected-answer">{LOCALE.GUESS_THE} {card.answerLabel}</p>}
-        <div className="card-value">{revealed ? card.back : card.front}</div>
+        <div className={`card-value ${revealed && card.isHanzi === "back" ? 'hanzi-cursive' : !revealed && card.isHanzi === "front" ? 'hanzi-cursive' : ''}`}>{revealed ? card.back : card.front}</div>
         {revealed && <p className="card-context">({remainingValue(card.entry, card.type)})</p>}
         {!revealed && <button className="reveal" onClick={() => setRevealed(true)}>{LOCALE.SHOW_ANSWER} <kbd>↑</kbd></button>}
         {revealed && <div className="answer-hint">
