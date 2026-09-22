@@ -169,6 +169,8 @@ function App() {
   const [activeTab, setActiveTab] = useState('practice');
   const [input, setInput] = useState('');
   const [isDebugImportOpen, setDebugImportOpen] = useState(false);
+  const [isSourceListOpen, setSourceListOpen] = useState(false);
+  const [isAddWordOpen, setAddWordOpen] = useState(false);
   const [expandedVocabularyId, setExpandedVocabularyId] = useState(null);
   const [newWord, setNewWord] = useState({ hanzi: '', pinyin: '', meaning: '' });
   const [editingVocabularyId, setEditingVocabularyId] = useState(null);
@@ -397,7 +399,8 @@ function App() {
 
     {activeTab === 'vocabulary' && <section className="vocabulary-tab" aria-label="Modify vocabulary" role="tabpanel">
       <div className="vocabulary-heading"><div><p className="panel-kicker">{LOCALE.YOUR_VOCABULARY}</p><h2>{LOCALE.VOCABULARY_HEADER}</h2><p>{LOCALE.VOCABULARY_SUBTITLE}.</p></div></div>
-      <div className="source-list">
+      <button className="section-toggle" onClick={() => setSourceListOpen((open) => !open)} aria-expanded={isSourceListOpen} aria-controls="source-list">{isSourceListOpen ? LOCALE.HIDE_VOCABULARIES : LOCALE.SHOW_VOCABULARIES}</button>
+      {isSourceListOpen && <div className="source-list" id="source-list">
         {PRELOADED_VOCABULARIES.map((vocabulary) => {
           const enabled = data.enabledVocabularyIds.includes(vocabulary.id);
           const expanded = expandedVocabularyId === vocabulary.id;
@@ -418,16 +421,19 @@ function App() {
             </div>}
           </article>;
         })}
-      </div>
+      </div>}
 
       <section className="add-word-panel" aria-label="Add a word">
-        <div><p className="panel-kicker">{LOCALE.EXTRA_WORDS}</p><h2>{LOCALE.ADD_A_WORD}</h2></div>
-        <div className="word-fields">
-          <input aria-label="Hanzi" value={newWord.hanzi} onChange={(event) => setNewWord((current) => ({ ...current, hanzi: event.target.value }))} placeholder="Hanzi" />
-          <input aria-label="Pinyin" value={newWord.pinyin} onChange={(event) => setNewWord((current) => ({ ...current, pinyin: event.target.value }))} placeholder="Pinyin" />
-          <input aria-label="Translation" value={newWord.meaning} onChange={(event) => setNewWord((current) => ({ ...current, meaning: event.target.value }))} placeholder="Translation" />
-        </div>
-        <button className="primary" onClick={addWord}>Add word</button>
+        <button className="section-toggle" onClick={() => setAddWordOpen((open) => !open)} aria-expanded={isAddWordOpen} aria-controls="add-word-fields">{isAddWordOpen ? LOCALE.CANCEL : LOCALE.ADD_WORD_OPEN}</button>
+        {isAddWordOpen && <div id="add-word-fields" className="add-word-fields">
+          <div><p className="panel-kicker">{LOCALE.EXTRA_WORDS}</p><h2>{LOCALE.ADD_A_WORD}</h2></div>
+          <div className="word-fields">
+            <input aria-label="Hanzi" value={newWord.hanzi} onChange={(event) => setNewWord((current) => ({ ...current, hanzi: event.target.value }))} placeholder="Hanzi" />
+            <input aria-label="Pinyin" value={newWord.pinyin} onChange={(event) => setNewWord((current) => ({ ...current, pinyin: event.target.value }))} placeholder="Pinyin" />
+            <input aria-label="Translation" value={newWord.meaning} onChange={(event) => setNewWord((current) => ({ ...current, meaning: event.target.value }))} placeholder="Translation" />
+          </div>
+          <button className="primary" onClick={addWord}>Add word</button>
+        </div>}
       </section>
 
       <section className="current-vocabulary" aria-label="Current vocabulary">

@@ -357,6 +357,22 @@ button {
     margin-bottom: 28px;
 }
 
+.section-toggle {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 12px 14px;
+    border: 1px solid #dcd4c5;
+    background: #fffdf8;
+    color: #294537;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.section-toggle:hover {
+    border-color: #9caf9d;
+}
+
 .source-card {
     border: 1px solid #dcd4c5;
     background: #fffdf8;
@@ -439,6 +455,10 @@ button {
 }
 
 .add-word-panel {
+    display: block;
+}
+
+.add-word-fields {
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 16px 28px;
@@ -918,8 +938,11 @@ kbd {
     }
 
     .add-word-panel {
-        grid-template-columns: 1fr;
         padding: 20px;
+    }
+
+    .add-word-fields {
+        grid-template-columns: 1fr;
         gap: 15px;
     }
 
