@@ -67,7 +67,10 @@
         "SESSION_COMPLETE_SUBTITLE_1": "You worked through",
         "SESSION_COMPLETE_SUBTITLE_2": "cards. Your updated weights are safely stored on this device",
         "CARDS_NEXT": "Cards in your next session",
-        "PRACTICE_AGAIN": "Practice again"
+        "PRACTICE_AGAIN": "Practice again",
+        "SHOW_VOCABULARIES": "See preloaded vocabularies",
+        "HIDE_VOCABULARIES": "Hide preloaded vocabularies",
+        "ADD_WORD_OPEN": "Add word manually"
     },
     "ES": {
         "LOAD_VOCABULARY_FORMAT_NOTICE": "Agregá una o más filas completas separadas por comas primero",
@@ -137,6 +140,9 @@
         "SESSION_COMPLETE_SUBTITLE_1": "Trabajaste a través de",
         "SESSION_COMPLETE_SUBTITLE_2": "tarjetas. Tus pesos actualizados están almacenados de forma segura en este dispositivo",
         "CARDS_NEXT": "Tarjetas en tu próxima sesión",
-        "PRACTICE_AGAIN": "Practicar otra vez"
+        "PRACTICE_AGAIN": "Practicar otra vez",
+        "SHOW_VOCABULARIES": "Ver vocabularios precargados",
+        "HIDE_VOCABULARIES": "Ocultar vocabularios precargados",
+        "ADD_WORD_OPEN": "Agregar palabra manualmente"
     }
 }
