@@ -439,7 +439,12 @@ function App() {
               <input aria-label="Hanzi" value={vocabularyDraft.hanzi} onChange={(event) => setVocabularyDraft((current) => ({ ...current, hanzi: event.target.value }))} />
               <input aria-label="Pinyin" value={vocabularyDraft.pinyin} onChange={(event) => setVocabularyDraft((current) => ({ ...current, pinyin: event.target.value }))} />
               <input aria-label="Translation" value={vocabularyDraft.meaning} onChange={(event) => setVocabularyDraft((current) => ({ ...current, meaning: event.target.value }))} />
-            </div> : <div className="current-word-values"><strong className="hanzi-cursive">{entry.hanzi}</strong><span>{entry.pinyin}</span><span>{entry.meaning}</span></div>}
+            </div> : <div className="current-word-values">
+                <strong className="hanzi-cursive">{entry.hanzi}</strong>
+                <span>{entry.pinyin}</span>
+                <span>{entry.meaning}</span>
+                <a href={`https://www.dong-chinese.com/dictionary/${entry.hanzi}`} target="_blank" rel="noopener noreferrer"><img src={dongChineseImage} alt="dongchinese" width="32" height="32" title="Check the character in Dong Chinese!"/></a>
+              </div>}
             <VocabularyPills hanzi={entry.hanzi} />
             <div className="word-actions">
               {editingVocabularyId === entry.id ? <><button className="small-button" onClick={() => saveVocabularyEntry(entry)}>{LOCALE.SAVE}</button><button className="small-button muted" onClick={() => setEditingVocabularyId(null)}>{LOCALE.CANCEL}</button></> : <button className="small-button" onClick={() => openVocabularyEditor(entry)}>{LOCALE.EDIT}</button>}
