@@ -1755,8 +1755,8 @@
                 "countries"
             ]
         },
-        "俄国": {
-            "pinyin": "Éguó",
+        "俄罗斯": {
+            "pinyin": "Eluósī",
             "EN": "Russia",
             "ES": "Rusia",
             "vocabularies": [
@@ -1855,6 +1855,78 @@
             "pinyin": "bàoqiàn",
             "EN": "sorry (formal)",
             "ES": "lo siento (formal)",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "中文": {
+            "pinyin": "zhōngwén",
+            "EN": "Chinese language",
+            "ES": "idioma chino",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "法文": {
+            "pinyin": "fǎwén",
+            "EN": "French language",
+            "ES": "idioma francés",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "英语": {
+            "pinyin": "yīngyǔ",
+            "EN": "English language",
+            "ES": "idioma inglés",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "法语": {
+            "pinyin": "fǎyǔ",
+            "EN": "Franch language",
+            "ES": "idioma francés",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "汉堡": {
+            "pinyin": "hànbǎo",
+            "EN": "hamburguer",
+            "ES": "hamburguesa",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "德文": {
+            "pinyin": "Déwén",
+            "EN": "German language",
+            "ES": "idioma alemán",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "日文": {
+            "pinyin": "Rìwén",
+            "EN": "Japanese language",
+            "ES": "idioma japonés",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "德语": {
+            "pinyin": "Déyǔ",
+            "EN": "German language",
+            "ES": "idioma alemán",
+            "vocabularies": [
+                "textbook-lessons-6-14"
+            ]
+        },
+        "面包": {
+            "pinyin": "miànbāo",
+            "EN": "bread",
+            "ES": "pan",
             "vocabularies": [
                 "textbook-lessons-6-14"
             ]
