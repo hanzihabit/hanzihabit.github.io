@@ -28,10 +28,10 @@
             }
         },
         {
-            "id": "textbook-lessons-6-14",
-            "Name": "Libro: Lecciones 6-14",
+            "id": "textbook-lessons-6-8",
+            "Name": "Libro: Lecciones 6-8",
             "pill": {
-                "text": "Lib: L. 6-14",
+                "text": "Lib: L. 6-8",
                 "color": "#FF8AE2",
                 "textcolor": "#E200FF"
             }
@@ -1111,7 +1111,7 @@
             "EN": "how many/how much",
             "ES": "cuántos/cuánto",
             "vocabularies": [
-                "HSK1"
+                "HSK1", "textbook-lessons-6-8"
             ]
         },
         "大": {
@@ -1224,7 +1224,7 @@
             "ES": "hoy",
             "vocabularies": [
                 "HSK1",
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "开": {
@@ -1240,7 +1240,7 @@
             "EN": "to look at",
             "ES": "mirar",
             "vocabularies": [
-                "HSK1"
+                "HSK1", "textbook-lessons-6-8"
             ]
         },
         "看见": {
@@ -1312,7 +1312,7 @@
             "EN": "name",
             "ES": "nombre",
             "vocabularies": [
-                "HSK1"
+                "HSK1", "textbook-lessons-6-8"
             ]
         },
         "明天": {
@@ -1321,7 +1321,7 @@
             "ES": "mañana",
             "vocabularies": [
                 "HSK1",
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "能": {
@@ -1378,7 +1378,7 @@
             "ES": "ir",
             "vocabularies": [
                 "HSK1",
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "热": {
@@ -1427,7 +1427,7 @@
             "ES": "tiempo/momento/período",
             "vocabularies": [
                 "HSK1",
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "书": {
@@ -1468,7 +1468,7 @@
             "ES": "decir",
             "vocabularies": [
                 "HSK1",
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "岁": {
@@ -1485,7 +1485,7 @@
             "ES": "demasiado",
             "vocabularies": [
                 "HSK1",
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "听": {
@@ -1517,7 +1517,7 @@
             "EN": "to like",
             "ES": "gustar",
             "vocabularies": [
-                "HSK1"
+                "HSK1", "textbook-lessons-6-8"
             ]
         },
         "下": {
@@ -1550,7 +1550,7 @@
             "ES": "ahora",
             "vocabularies": [
                 "HSK1",
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "想": {
@@ -1639,7 +1639,7 @@
             "ES": "tener",
             "vocabularies": [
                 "HSK1",
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "月": {
@@ -1704,7 +1704,7 @@
             "ES": "ayer",
             "vocabularies": [
                 "HSK1",
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "做": {
@@ -1729,7 +1729,7 @@
             "ES": "clima",
             "vocabularies": [
                 "HSK1",
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "医生": {
@@ -1784,7 +1784,7 @@
             "EN": "swim",
             "ES": "nadar",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "京剧": {
@@ -1792,7 +1792,7 @@
             "EN": "Peking Opera",
             "ES": "Ópera de Pekín",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "有意思": {
@@ -1800,7 +1800,7 @@
             "EN": "interesting",
             "ES": "interesante",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "时间": {
@@ -1808,7 +1808,7 @@
             "EN": "free (general sense)",
             "ES": "tiempo (general)",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "遍": {
@@ -1816,7 +1816,7 @@
             "EN": "[measure word for actions]",
             "ES": "[clasificador para acciones]",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "恐怕": {
@@ -1824,7 +1824,7 @@
             "EN": "I'm afraid that",
             "ES": "me temo que",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "行": {
@@ -1832,7 +1832,7 @@
             "EN": "Okay/Fine",
             "ES": "Okay/Bien",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "打": {
@@ -1840,7 +1840,7 @@
             "EN": "to play/manipulate (balls)",
             "ES": "jugar/manipular (pelotas)",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "球": {
@@ -1848,7 +1848,7 @@
             "EN": "ball",
             "ES": "pelota",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
         "抱歉": {
@@ -1856,79 +1856,231 @@
             "EN": "sorry (formal)",
             "ES": "lo siento (formal)",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
-        "中文": {
-            "pinyin": "zhōngwén",
-            "EN": "Chinese language",
-            "ES": "idioma chino",
+        "开学": {
+            "pinyin": "kāixué",
+            "EN": "start of classes",
+            "ES": "comienzo de clases",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
-        "法文": {
-            "pinyin": "fǎwén",
-            "EN": "French language",
-            "ES": "idioma francés",
+        "一下": {
+            "pinyin": "yíxià",
+            "EN": "a little bit/[quick action]",
+            "ES": "un poco/[acción rápida]",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
-        "英语": {
-            "pinyin": "yīngyǔ",
-            "EN": "English language",
-            "ES": "idioma inglés",
+        "名片": {
+            "pinyin": "míngpiàn",
+            "EN": "business card",
+            "ES": "tarjeta de presentación",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
-        "法语": {
-            "pinyin": "fǎyǔ",
-            "EN": "Franch language",
-            "ES": "idioma francés",
+        "介绍": {
+            "pinyin": "jièshào",
+            "EN": "introduction",
+            "ES": "introducción",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
-        "汉堡": {
-            "pinyin": "hànbǎo",
-            "EN": "hamburguer",
-            "ES": "hamburguesa",
+        "专业": {
+            "pinyin": "zhuānyè",
+            "EN": "major/field of study",
+            "ES": "especialidad/carrera",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
-        "德文": {
-            "pinyin": "Déwén",
-            "EN": "German language",
-            "ES": "idioma alemán",
+        "美术": {
+            "pinyin": "měishù",
+            "EN": "fine arts",
+            "ES": "artes plásticas",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
-        "日文": {
-            "pinyin": "Rìwén",
-            "EN": "Japanese language",
-            "ES": "idioma japonés",
+        "文学": {
+            "pinyin": "wénxué",
+            "EN": "literature",
+            "ES": "literatura",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
-        "德语": {
-            "pinyin": "Déyǔ",
-            "EN": "German language",
-            "ES": "idioma alemán",
+        "系": {
+            "pinyin": "xì",
+            "EN": "department",
+            "ES": "departamento",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
             ]
         },
-        "面包": {
-            "pinyin": "miànbāo",
-            "EN": "bread",
-            "ES": "pan",
+        "文化": {
+            "pinyin": "wénhuà",
+            "EN": "culture",
+            "ES": "cultura",
             "vocabularies": [
-                "textbook-lessons-6-14"
+                "textbook-lessons-6-8"
+            ]
+        },
+        "历史": {
+            "pinyin": "lìshǐ",
+            "EN": "history",
+            "ES": "historia",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "哲学": {
+            "pinyin": "zhéxué",
+            "EN": "philosophy",
+            "ES": "filosofía",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "音乐": {
+            "pinyin": "yīnyuè",
+            "EN": "music",
+            "ES": "música",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "经济": {
+            "pinyin": "jīngjì",
+            "EN": "economy",
+            "ES": "economía",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "数学": {
+            "pinyin": "shùxué",
+            "EN": "mathematics",
+            "ES": "matemáticas",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "物理": {
+            "pinyin": "wùlǐ",
+            "EN": "physics",
+            "ES": "física",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "化学": {
+            "pinyin": "huàxué",
+            "EN": "chemistry",
+            "ES": "química",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "教育": {
+            "pinyin": "jiàoyù",
+            "EN": "education",
+            "ES": "educación",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "家": {
+            "pinyin": "jiā",
+            "EN": "family",
+            "ES": "familia",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "口": {
+            "pinyin": "kǒu",
+            "EN": "mouth/[class. for family members]",
+            "ES": "boca/[clas. para miembros de la familia]",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "照片": {
+            "pinyin": "zhàopiàn",
+            "EN": "photo",
+            "ES": "foto",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "还": {
+            "pinyin": "hái",
+            "EN": "still/also",
+            "ES": "aún/además",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "一共": {
+            "pinyin": "yígòng",
+            "EN": "all together/in total",
+            "ES": "juntos/en total",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "当然": {
+            "pinyin": "dāngrán",
+            "EN": "of course/naturally",
+            "ES": "por supuesto/naturalmente",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "真": {
+            "pinyin": "zhēn",
+            "EN": "really",
+            "ES": "realmente",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "可爱": {
+            "pinyin": "kě'ài",
+            "EN": "cute",
+            "ES": "lindo/adorable",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "车": {
+            "pinyin": "chē",
+            "EN": "car",
+            "ES": "coche",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "词典": {
+            "pinyin": "cídiǎn",
+            "EN": "dictionary",
+            "ES": "diccionario",
+            "vocabularies": [
+                "textbook-lessons-6-8"
+            ]
+        },
+        "孩子": {
+            "pinyin": "hái zi",
+            "EN": "child",
+            "ES": "niño/a",
+            "vocabularies": [
+                "textbook-lessons-6-8"
             ]
         }
     }
