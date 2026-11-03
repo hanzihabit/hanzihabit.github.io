@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css');
+
 .source-words {
     border-top: 1px solid #e7dfd2;
     padding: 5px 14px 12px;
@@ -82,8 +85,6 @@
     background:
         #fffdf8;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap');
 
 :root {
     color: #24352e;
@@ -1187,5 +1188,5 @@ kbd {
 }
 
 .hanzi-cursive {
-    font-family: cursive !important;
+    font-family: 'LXGW WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', cursive !important;
 }
