@@ -285,6 +285,31 @@ button {
     border-color: transparent;
 }
 
+.practice-vocabulary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    margin: 0 0 18px;
+    color: #587064;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.practice-vocabulary select {
+    max-width: 100%;
+    padding: 8px 30px 8px 10px;
+    border: 1px solid #cbc4b6;
+    background: #fffdf8;
+    color: #24352e;
+    font: 12px Manrope, sans-serif;
+}
+
+.practice-vocabulary select:focus {
+    outline: 2px solid #9caf9d;
+    border-color: transparent;
+}
+
 .import-panel {
     display: grid;
     grid-template-columns: 1fr 1.2fr;

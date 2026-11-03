@@ -121,10 +121,13 @@ function parseVocabulary(text) {
     .map((parts) => parts.slice(0, 3));
 }
 
-function makeDeck(data, sessionSize) {
+function makeDeck(data, sessionSize, vocabularyId) {
   const relationships = [];
   const allowedTypes = Object.entries(data.enabledSessionControls).filter(([, enabled]) => enabled).map(([type]) => type);
-  data.entries.forEach((entry) => {
+  const entries = vocabularyId
+    ? data.entries.filter((entry) => WORDS_BY_HANZI[entry.hanzi]?.vocabularies.includes(vocabularyId))
+    : data.entries;
+  entries.forEach((entry) => {
     allowedTypes.forEach((type) => {
       relationships.push({ entry, type, key: keyFor(entry.id, type) });
     });
@@ -176,6 +179,7 @@ function App() {
   const [editingVocabularyId, setEditingVocabularyId] = useState(null);
   const [vocabularyDraft, setVocabularyDraft] = useState({ hanzi: '', pinyin: '', meaning: '' });
   const [deck, setDeck] = useState([]);
+  const [selectedVocabularyId, setSelectedVocabularyId] = useState('');
   const [position, setPosition] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [notice, setNotice] = useState('');
@@ -189,6 +193,10 @@ function App() {
   const card = deck[position];
   const remaining = Math.max(0, deck.length - position);
   const totalRelationships = data.entries.length * 3;
+  const enabledVocabularies = PRELOADED_VOCABULARIES.filter((vocabulary) => data.enabledVocabularyIds.includes(vocabulary.id));
+  const selectedEntries = selectedVocabularyId
+    ? data.entries.filter((entry) => WORDS_BY_HANZI[entry.hanzi]?.vocabularies.includes(selectedVocabularyId))
+    : data.entries;
 
   function loadVocabulary() {
     const rows = parseVocabulary(input);
@@ -209,6 +217,7 @@ function App() {
   }
 
   function setVocabularyEnabled(id, enabled) {
+    if (!enabled && selectedVocabularyId === id) setSelectedVocabularyId('');
     setData((current) => prepareData({
       ...current,
       enabledVocabularyIds: enabled ? [...current.enabledVocabularyIds, id] : current.enabledVocabularyIds.filter((item) => item !== id),
@@ -325,14 +334,18 @@ function App() {
   }
 
   function startPractice() {
-    if (!data.entries.length) {
-      setActiveTab('vocabulary');
-      setNotice(`${LOCALE.START_PRACTICE_MISSING_VOCABULARY_NOTICE}.`);
+    if (!selectedEntries.length) {
+      if (!data.entries.length) {
+        setActiveTab('vocabulary');
+        setNotice(`${LOCALE.START_PRACTICE_MISSING_VOCABULARY_NOTICE}.`);
+      } else {
+        setNotice(`${LOCALE.EMPTY_SELECTED_VOCABULARY_NOTICE}.`);
+      }
       return;
     }
     const sessionSize = normaliseSessionSize(data.sessionSize);
     setData((current) => current.sessionSize === sessionSize ? current : { ...current, sessionSize });
-    setDeck(makeDeck(data, sessionSize));
+    setDeck(makeDeck(data, sessionSize, selectedVocabularyId));
     setPosition(0);
     setRevealed(false);
     setNotice('');
@@ -504,6 +517,12 @@ function App() {
       <p className="panel-kicker">{data.entries.length ? `${data.entries.length} ${LOCALE.WORDS} · ${totalRelationships} ${relationshipText}` : LOCALE.PERSONAL_DECK}</p>
       <h2>{data.entries.length ? LOCALE.READY_WHEN : LOCALE.START_WITH}</h2>
       <p>{data.entries.length ? LOCALE.WEIGHTS_EXPLAIN : LOCALE.VOCABULARY_EXPLAIN}</p>
+      {enabledVocabularies.length > 0 && <label className="practice-vocabulary">{LOCALE.PRACTICE_VOCABULARY_LABEL}
+        <select value={selectedVocabularyId} onChange={(event) => { setSelectedVocabularyId(event.target.value); setNotice(''); }}>
+          <option value="">{LOCALE.ALL_ENABLED_VOCABULARIES}</option>
+          {enabledVocabularies.map((vocabulary) => <option key={vocabulary.id} value={vocabulary.id}>{vocabulary.Name}</option>)}
+        </select>
+      </label>}
       <div className="session-controls">
         {['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].map((type) => {
           const labels = { 'hanzi-pinyin': 'Hanzi ↔ Pinyin', 'hanzi-meaning': `Hanzi ↔ ${LOCALE.MEANING}`, 'pinyin-meaning': `Pinyin ↔ ${LOCALE.MEANING}` };
@@ -544,6 +563,12 @@ function App() {
 
     {!card && position > 0 && <section className="complete-card">
       <p className="panel-kicker">{LOCALE.SESSION_COMPLETE}</p><h2>{LOCALE.SESSION_COMPLETE_TITLE}</h2><p>{LOCALE.SESSION_COMPLETE_SUBTITLE_1} {deck.length} {LOCALE.SESSION_COMPLETE_SUBTITLE_2}</p>
+      {enabledVocabularies.length > 0 && <label className="practice-vocabulary">{LOCALE.PRACTICE_VOCABULARY_LABEL}
+        <select value={selectedVocabularyId} onChange={(event) => { setSelectedVocabularyId(event.target.value); setNotice(''); }}>
+          <option value="">{LOCALE.ALL_ENABLED_VOCABULARIES}</option>
+          {enabledVocabularies.map((vocabulary) => <option key={vocabulary.id} value={vocabulary.id}>{vocabulary.Name}</option>)}
+        </select>
+      </label>}
       <div className="session-controls">
         {['hanzi-pinyin', 'hanzi-meaning', 'pinyin-meaning'].map((type) => {
           const labels = { 'hanzi-pinyin': 'Hanzi ↔ Pinyin', 'hanzi-meaning': `Hanzi ↔ ${LOCALE.MEANING}`, 'pinyin-meaning': `Pinyin ↔ ${LOCALE.MEANING}` };
