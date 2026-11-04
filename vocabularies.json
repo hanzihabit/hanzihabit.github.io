@@ -62,6 +62,24 @@
                 "color": "#28EDAE",
                 "textcolor": "#157D5C"
             }
+        },
+        {
+            "id": "hello-chinese-1",
+            "Name": "Hello Chinese Elementary 1",
+            "pill": {
+                "text": "HC Elem 1",
+                "color": "#9842FF",
+                "textcolor": "#54007D"
+            }
+        },
+        {
+            "id": "hello-chinese-2",
+            "Name": "Hello Chinese Elementary 2",
+            "pill": {
+                "text": "HC Elem 2",
+                "color": "#4269FF",
+                "textcolor": "#0F005E"
+            }
         }
     ],
     "words": {
@@ -71,7 +89,8 @@
             "ES": "vos",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "好": {
@@ -80,7 +99,8 @@
             "ES": "bien",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "吗": {
@@ -107,7 +127,8 @@
             "ES": "muy",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "也": {
@@ -115,7 +136,8 @@
             "EN": "also",
             "ES": "también",
             "vocabularies": [
-                "textbook-lessons-1-5"
+                "textbook-lessons-1-5",
+                "hello-chinese-1"
             ]
         },
         "不": {
@@ -124,7 +146,8 @@
             "ES": "no",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "是": {
@@ -151,7 +174,8 @@
             "ES": "[partícula de lugar]",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "这": {
@@ -169,7 +193,8 @@
             "ES": "es@",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "哪": {
@@ -178,7 +203,8 @@
             "ES": "cuál?",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "谁": {
@@ -187,7 +213,8 @@
             "ES": "quién?",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "什么": {
@@ -196,7 +223,8 @@
             "ES": "qué?",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "呢": {
@@ -223,7 +251,8 @@
             "vocabularies": [
                 "family",
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "妈妈": {
@@ -233,7 +262,8 @@
             "vocabularies": [
                 "family",
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "他": {
@@ -242,7 +272,8 @@
             "ES": "él",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "们": {
@@ -251,7 +282,8 @@
             "ES": "[pronombres plural]",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "都": {
@@ -260,7 +292,8 @@
             "ES": "todos/ambos",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "男": {
@@ -268,7 +301,8 @@
             "EN": "male",
             "ES": "hombre",
             "vocabularies": [
-                "textbook-lessons-1-5"
+                "textbook-lessons-1-5",
+                "hello-chinese-1"
             ]
         },
         "朋友": {
@@ -277,7 +311,8 @@
             "ES": "amigo",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "哥哥": {
@@ -286,7 +321,8 @@
             "ES": "hermano mayor",
             "vocabularies": [
                 "family",
-                "textbook-lessons-1-5"
+                "textbook-lessons-1-5",
+                "hello-chinese-1"
             ]
         },
         "要": {
@@ -294,7 +330,8 @@
             "EN": "want",
             "ES": "querer",
             "vocabularies": [
-                "textbook-lessons-1-5"
+                "textbook-lessons-1-5",
+                "hello-chinese-1"
             ]
         },
         "咖啡": {
@@ -302,7 +339,8 @@
             "EN": "coffee",
             "ES": "café",
             "vocabularies": [
-                "textbook-lessons-1-5"
+                "textbook-lessons-1-5",
+                "hello-chinese-1"
             ]
         },
         "弟弟": {
@@ -311,7 +349,8 @@
             "ES": "hermano menor",
             "vocabularies": [
                 "family",
-                "textbook-lessons-1-5"
+                "textbook-lessons-1-5",
+                "hello-chinese-1"
             ]
         },
         "喝": {
@@ -320,7 +359,8 @@
             "ES": "beber",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "她": {
@@ -329,7 +369,8 @@
             "ES": "ella",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "国": {
@@ -337,7 +378,8 @@
             "EN": "country/realm/state",
             "ES": "país/reino/estado",
             "vocabularies": [
-                "textbook-lessons-1-5"
+                "textbook-lessons-1-5",
+                "hello-chinese-1"
             ]
         },
         "人": {
@@ -346,7 +388,8 @@
             "ES": "persona",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "老师": {
@@ -355,7 +398,8 @@
             "ES": "maestro",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "中国": {
@@ -365,7 +409,8 @@
             "vocabularies": [
                 "textbook-lessons-1-5",
                 "HSK1",
-                "countries"
+                "countries",
+                "hello-chinese-1"
             ]
         },
         "认识": {
@@ -441,7 +486,8 @@
             "EN": "may I ask...?",
             "ES": "podría preguntar...?",
             "vocabularies": [
-                "textbook-lessons-1-5"
+                "textbook-lessons-1-5",
+                "hello-chinese-1"
             ]
         },
         "问": {
@@ -474,7 +520,8 @@
             "ES": "llamarse",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "先生": {
@@ -499,7 +546,8 @@
             "EN": "learning institute",
             "ES": "instituto educativo",
             "vocabularies": [
-                "textbook-lessons-1-5"
+                "textbook-lessons-1-5",
+                "hello-chinese-1"
             ]
         },
         "学生": {
@@ -508,7 +556,8 @@
             "ES": "estudiante",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "学习": {
@@ -535,7 +584,8 @@
             "ES": "Inglaterra",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "countries"
+                "countries",
+                "hello-chinese-1"
             ]
         },
         "加拿大": {
@@ -553,7 +603,8 @@
             "ES": "Estados Unidos",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "countries"
+                "countries",
+                "hello-chinese-1"
             ]
         },
         "餐厅": {
@@ -570,7 +621,18 @@
             "ES": "dónde",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
+            ]
+        },
+        "那儿": {
+            "pinyin": "nàr",
+            "EN": "there",
+            "ES": "allá",
+            "vocabularies": [
+                "textbook-lessons-1-5",
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "宿舍": {
@@ -586,7 +648,8 @@
             "EN": "woman",
             "ES": "mujer",
             "vocabularies": [
-                "textbook-lessons-1-5"
+                "textbook-lessons-1-5",
+                "hello-chinese-1"
             ]
         },
         "坐": {
@@ -639,7 +702,8 @@
             "ES": "chau",
             "vocabularies": [
                 "textbook-lessons-1-5",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "小姐": {
@@ -685,7 +749,8 @@
             "vocabularies": [
                 "textbook-lessons-1-5",
                 "numbers",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "号": {
@@ -710,7 +775,8 @@
             "EN": "here",
             "ES": "aquí",
             "vocabularies": [
-                "textbook-lessons-1-5"
+                "textbook-lessons-1-5",
+                "hello-chinese-1"
             ]
         },
         "晚": {
@@ -718,7 +784,7 @@
             "EN": "late",
             "ES": "tarde (adverbio)",
             "vocabularies": [
-                "textbook-lessons-1-5"
+                "hello-chinese-1"
             ]
         },
         "了": {
@@ -736,7 +802,8 @@
             "ES": "1",
             "vocabularies": [
                 "numbers",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "三": {
@@ -745,7 +812,8 @@
             "ES": "3",
             "vocabularies": [
                 "numbers",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "五": {
@@ -754,7 +822,8 @@
             "ES": "5",
             "vocabularies": [
                 "numbers",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "六": {
@@ -763,7 +832,8 @@
             "ES": "6",
             "vocabularies": [
                 "numbers",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "七": {
@@ -772,7 +842,8 @@
             "ES": "7",
             "vocabularies": [
                 "numbers",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "八": {
@@ -781,7 +852,8 @@
             "ES": "8",
             "vocabularies": [
                 "numbers",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "九": {
@@ -790,7 +862,8 @@
             "ES": "9",
             "vocabularies": [
                 "numbers",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "十": {
@@ -799,7 +872,8 @@
             "ES": "10",
             "vocabularies": [
                 "numbers",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "百": {
@@ -895,7 +969,8 @@
             "EN": "younger sister",
             "ES": "hermana menor",
             "vocabularies": [
-                "family"
+                "family",
+                "hello-chinese-1"
             ]
         },
         "爷爷": {
@@ -936,7 +1011,8 @@
             "ES": "hijo",
             "vocabularies": [
                 "family",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "女儿": {
@@ -945,7 +1021,8 @@
             "ES": "hija",
             "vocabularies": [
                 "family",
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "儿女": {
@@ -961,7 +1038,8 @@
             "EN": "husband",
             "ES": "esposo",
             "vocabularies": [
-                "family"
+                "family",
+                "hello-chinese-1"
             ]
         },
         "妻子": {
@@ -969,7 +1047,8 @@
             "EN": "wife",
             "ES": "esposa",
             "vocabularies": [
-                "family"
+                "family",
+                "hello-chinese-1"
             ]
         },
         "父母": {
@@ -983,7 +1062,8 @@
             "EN": "love",
             "ES": "amar",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "杯子": {
@@ -1023,7 +1103,8 @@
             "EN": "tea",
             "ES": "té",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "吃": {
@@ -1031,7 +1112,8 @@
             "EN": "to eat",
             "ES": "comer",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "出租车": {
@@ -1063,7 +1145,8 @@
             "EN": "computer",
             "ES": "computadora",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "电视": {
@@ -1071,7 +1154,8 @@
             "EN": "television",
             "ES": "televisión",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "电影": {
@@ -1079,7 +1163,8 @@
             "EN": "movie",
             "ES": "película",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "东西": {
@@ -1095,7 +1180,8 @@
             "EN": "to read",
             "ES": "leer",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "多": {
@@ -1111,7 +1197,9 @@
             "EN": "how many/how much",
             "ES": "cuántos/cuánto",
             "vocabularies": [
-                "HSK1", "textbook-lessons-6-8"
+                "HSK1",
+                "textbook-lessons-6-8",
+                "hello-chinese-1"
             ]
         },
         "大": {
@@ -1119,7 +1207,8 @@
             "EN": "big, large",
             "ES": "grande",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "饭店": {
@@ -1151,7 +1240,8 @@
             "EN": "[general measure word]",
             "ES": "[clasificador general]",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "工作": {
@@ -1159,7 +1249,8 @@
             "EN": "work",
             "ES": "trabajo",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "狗": {
@@ -1167,7 +1258,8 @@
             "EN": "dog",
             "ES": "perro",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "和": {
@@ -1175,7 +1267,8 @@
             "EN": "and",
             "ES": "y",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "后面": {
@@ -1207,15 +1300,8 @@
             "EN": "how many/how much",
             "ES": "cuántos/cuánto",
             "vocabularies": [
-                "HSK1"
-            ]
-        },
-        "家": {
-            "pinyin": "jiā",
-            "EN": "house",
-            "ES": "casa",
-            "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "今天": {
@@ -1240,7 +1326,9 @@
             "EN": "to look at",
             "ES": "mirar",
             "vocabularies": [
-                "HSK1", "textbook-lessons-6-8"
+                "HSK1",
+                "textbook-lessons-6-8",
+                "hello-chinese-1"
             ]
         },
         "看见": {
@@ -1256,7 +1344,7 @@
             "EN": "fast",
             "ES": "rápido",
             "vocabularies": [
-                "HSK1"
+                "hello-chinese-1"
             ]
         },
         "冷": {
@@ -1288,7 +1376,8 @@
             "EN": "cat",
             "ES": "gato",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "没有": {
@@ -1296,7 +1385,8 @@
             "EN": "not to have",
             "ES": "no tener",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "米饭": {
@@ -1304,7 +1394,8 @@
             "EN": "rice",
             "ES": "arroz",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "名字": {
@@ -1312,7 +1403,8 @@
             "EN": "name",
             "ES": "nombre",
             "vocabularies": [
-                "HSK1", "textbook-lessons-6-8"
+                "HSK1",
+                "textbook-lessons-6-8"
             ]
         },
         "明天": {
@@ -1353,7 +1445,8 @@
             "EN": "apple",
             "ES": "manzana",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "前面": {
@@ -1369,7 +1462,7 @@
             "EN": "money",
             "ES": "dinero",
             "vocabularies": [
-                "HSK1"
+                "hello-chinese-1"
             ]
         },
         "去": {
@@ -1435,7 +1528,8 @@
             "EN": "book",
             "ES": "libro",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "水": {
@@ -1443,7 +1537,8 @@
             "EN": "water",
             "ES": "agua",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "水果": {
@@ -1476,7 +1571,8 @@
             "EN": "year",
             "ES": "año",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "太": {
@@ -1493,7 +1589,8 @@
             "EN": "to listen",
             "ES": "escuchar",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "同学": {
@@ -1501,7 +1598,8 @@
             "EN": "classmate",
             "ES": "compañero de clase",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "喂": {
@@ -1517,7 +1615,9 @@
             "EN": "to like",
             "ES": "gustar",
             "vocabularies": [
-                "HSK1", "textbook-lessons-6-8"
+                "HSK1",
+                "textbook-lessons-6-8",
+                "hello-chinese-1"
             ]
         },
         "下": {
@@ -1566,7 +1666,8 @@
             "EN": "small",
             "ES": "pequeño",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "些": {
@@ -1598,7 +1699,8 @@
             "EN": "school",
             "ES": "escuela",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "一点儿": {
@@ -1614,7 +1716,8 @@
             "EN": "hospital",
             "ES": "hospital",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "衣服": {
@@ -1622,7 +1725,8 @@
             "EN": "clothes",
             "ES": "ropa",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "椅子": {
@@ -1639,7 +1743,8 @@
             "ES": "tener",
             "vocabularies": [
                 "HSK1",
-                "textbook-lessons-6-8"
+                "textbook-lessons-6-8",
+                "hello-chinese-1"
             ]
         },
         "月": {
@@ -1663,7 +1768,8 @@
             "EN": "how is it",
             "ES": "cómo está/qué tal",
             "vocabularies": [
-                "HSK1"
+                "HSK1",
+                "hello-chinese-1"
             ]
         },
         "中午": {
@@ -1737,8 +1843,10 @@
             "EN": "doctor",
             "ES": "médico",
             "vocabularies": [
-                "HSK1" ]
-            },
+                "HSK1",
+                "hello-chinese-1"
+            ]
+        },
         "阿根廷": {
             "pinyin": "Āgēntíng",
             "EN": "Argentina",
@@ -1776,7 +1884,8 @@
             "EN": "Japan",
             "ES": "Japón",
             "vocabularies": [
-                "countries"
+                "countries",
+                "hello-chinese-1"
             ]
         },
         "游泳": {
@@ -1952,7 +2061,8 @@
             "EN": "music",
             "ES": "música",
             "vocabularies": [
-                "textbook-lessons-6-8"
+                "textbook-lessons-6-8",
+                "hello-chinese-1"
             ]
         },
         "经济": {
@@ -1997,10 +2107,12 @@
         },
         "家": {
             "pinyin": "jiā",
-            "EN": "family",
-            "ES": "familia",
+            "EN": "family/home",
+            "ES": "familia/hogar",
             "vocabularies": [
-                "textbook-lessons-6-8"
+                "textbook-lessons-6-8",
+                "hello-chinese-1",
+                "HSK1"
             ]
         },
         "口": {
@@ -2064,7 +2176,8 @@
             "EN": "car",
             "ES": "coche",
             "vocabularies": [
-                "textbook-lessons-6-8"
+                "textbook-lessons-6-8",
+                "hello-chinese-1"
             ]
         },
         "词典": {
@@ -2080,8 +2193,396 @@
             "EN": "child",
             "ES": "niño/a",
             "vocabularies": [
+                "textbook-lessons-6-8",
+                "hello-chinese-1"
+            ]
+        },
+        "男朋友": {
+            "pinyin": "nán péngyou",
+            "EN": "boyfriend",
+            "ES": "novio",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "女朋友": {
+            "pinyin": "nǚ péngyou",
+            "EN": "girlfriend",
+            "ES": "novia",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "同事": {
+            "pinyin": "tóngshì",
+            "EN": "colleague",
+            "ES": "colega",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "老板": {
+            "pinyin": "lǎobǎn",
+            "EN": "boss",
+            "ES": "jefe",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "网友": {
+            "pinyin": "wǎng yǒu",
+            "EN": "online friend",
+            "ES": "amigo de internet",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "室友": {
+            "pinyin": "shìyǒu",
+            "EN": "roommate",
+            "ES": "compañero/a de cuarto",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "杯": {
+            "pinyin": "bēi",
+            "EN": "cup; cupful (measure word)",
+            "ES": "taza; medida para bebidas",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "两": {
+            "pinyin": "liǎng",
+            "EN": "two (before a measure word)",
+            "ES": "dos (delante de un clasificador)",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "瓶": {
+            "pinyin": "píng",
+            "EN": "bottle; bottleful (measure word)",
+            "ES": "botella; medida para botellas",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "牛奶": {
+            "pinyin": "niúnǎi",
+            "EN": "milk",
+            "ES": "leche",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "蛋糕": {
+            "pinyin": "dàngāo",
+            "EN": "cake",
+            "ES": "pastel",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "块": {
+            "pinyin": "kuài",
+            "EN": "piece; yuan (colloquial measure word)",
+            "ES": "pedazo; yuan (clasificador coloquial)",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "面包": {
+            "pinyin": "miànbāo",
+            "EN": "bread",
+            "ES": "pan",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "果汁": {
+            "pinyin": "guǒzhī",
+            "EN": "juice",
+            "ES": "jugo",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "可乐": {
+            "pinyin": "kělè",
+            "EN": "cola",
+            "ES": "cola (bebida)",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "饭馆": {
+            "pinyin": "fànguǎn",
+            "EN": "restaurant",
+            "ES": "restaurante",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "洗手间": {
+            "pinyin": "xǐshǒujiān",
+            "EN": "restroom",
+            "ES": "baño",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "商场": {
+            "pinyin": "shāngchǎng",
+            "EN": "shopping mall",
+            "ES": "centro comercial",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "前边": {
+            "pinyin": "qiánbian",
+            "EN": "in front; ahead",
+            "ES": "delante; al frente",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "后边": {
+            "pinyin": "hòubian",
+            "EN": "behind; at the back",
+            "ES": "detrás; al fondo",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "里边": {
+            "pinyin": "lǐbian",
+            "EN": "inside",
+            "ES": "dentro",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "外边": {
+            "pinyin": "wàibian",
+            "EN": "outside",
+            "ES": "fuera",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "孩儿": {
+            "pinyin": "háir",
+            "EN": "child; kid",
+            "ES": "niño/a",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "讨厌": {
+            "pinyin": "tǎoyàn",
+            "EN": "to dislike; annoying",
+            "ES": "detestar; molesto",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "面条儿": {
+            "pinyin": "miàntiáor",
+            "EN": "noodles",
+            "ES": "fideos",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "粥": {
+            "pinyin": "zhōu",
+            "EN": "porridge",
+            "ES": "papilla",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "汤": {
+            "pinyin": "tāng",
+            "EN": "soup",
+            "ES": "sopa",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "包子": {
+            "pinyin": "bāozi",
+            "EN": "steamed stuffed bun",
+            "ES": "bollo relleno al vapor",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "饺子": {
+            "pinyin": "jiǎozi",
+            "EN": "Chinese dumpling",
+            "ES": "empanadilla china",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "豆浆": {
+            "pinyin": "dòujiāng",
+            "EN": "soy milk",
+            "ES": "leche de soja",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "油条": {
+            "pinyin": "yóutiáo",
+            "EN": "deep-fried dough stick",
+            "ES": "palillos de masa frita",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "多大": {
+            "pinyin": "duō dà",
+            "EN": "how old; how big",
+            "ES": "cuántos años; qué tamaño",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "韩国": {
+            "pinyin": "Hánguó",
+            "EN": "South Korea",
+            "ES": "Corea del Sur",
+            "vocabularies": ["hello-chinese-1", "countries"]
+        },
+        "班": {
+            "pinyin": "bān",
+            "EN": "class; group",
+            "ES": "clase; grupo",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "公司": {
+            "pinyin": "gōngsī",
+            "EN": "company",
+            "ES": "empresa",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "肉": {
+            "pinyin": "ròu",
+            "EN": "meat",
+            "ES": "carne",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "鸡蛋": {
+            "pinyin": "jīdàn",
+            "EN": "egg",
+            "ES": "huevo",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "花生": {
+            "pinyin": "huāshēng",
+            "EN": "peanut",
+            "ES": "maní",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "酒": {
+            "pinyin": "jiǔ",
+            "EN": "alcohol; liquor",
+            "ES": "bebida alcohólica",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "海鲜": {
+            "pinyin": "hǎixiān",
+            "EN": "seafood",
+            "ES": "mariscos",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "豆腐": {
+            "pinyin": "dòufu",
+            "EN": "tofu",
+            "ES": "tofu",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "香蕉": {
+            "pinyin": "xiāngjiāo",
+            "EN": "banana",
+            "ES": "banana",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "胡萝卜": {
+            "pinyin": "húluóbo",
+            "EN": "carrot",
+            "ES": "zanahoria",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "土豆": {
+            "pinyin": "tǔdòu",
+            "EN": "potato",
+            "ES": "papa",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "巧克力": {
+            "pinyin": "qiǎokèlì",
+            "EN": "chocolate",
+            "ES": "chocolate",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "饼干": {
+            "pinyin": "bǐnggān",
+            "EN": "cookie",
+            "ES": "galleta",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "酸奶": {
+            "pinyin": "suānnǎi",
+            "EN": "yogurt",
+            "ES": "yogur",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "经常": {
+            "pinyin": "jīngcháng",
+            "EN": "often; frequently",
+            "ES": "a menudo; frecuentemente",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "还是": {
+            "pinyin": "háishi",
+            "EN": "or (in a question); still",
+            "ES": "o (en una pregunta); todavía",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "运动": {
+            "pinyin": "yùndòng",
+            "EN": "sports; exercise",
+            "ES": "deporte; ejercicio",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "游戏": {
+            "pinyin": "yóuxì",
+            "EN": "game",
+            "ES": "juego",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "玩儿": {
+            "pinyin": "wánr",
+            "EN": "to play; to have fun",
+            "ES": "jugar; divertirse",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "打球": {
+            "pinyin": "dǎ qiú",
+            "EN": "to play ball",
+            "ES": "jugar a la pelota",
+            "vocabularies": [
+                "hello-chinese-1",
                 "textbook-lessons-6-8"
             ]
+        },
+        "报纸": {
+            "pinyin": "bàozhǐ",
+            "EN": "newspaper",
+            "ES": "periódico",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "手机": {
+            "pinyin": "shǒujī",
+            "EN": "mobile phone",
+            "ES": "celular",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "贵": {
+            "pinyin": "guì",
+            "EN": "expensive",
+            "ES": "caro",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "便宜": {
+            "pinyin": "piányi",
+            "EN": "cheap; inexpensive",
+            "ES": "barato; económico",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "包": {
+            "pinyin": "bāo",
+            "EN": "bag",
+            "ES": "bolso",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "好看": {
+            "pinyin": "hǎokàn",
+            "EN": "good-looking; attractive",
+            "ES": "bonito; atractivo",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "重": {
+            "pinyin": "zhòng",
+            "EN": "heavy",
+            "ES": "pesado",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "酷": {
+            "pinyin": "kù",
+            "EN": "cool",
+            "ES": "genial",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "手表": {
+            "pinyin": "shǒubiǎo",
+            "EN": "wristwatch",
+            "ES": "reloj de pulsera",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "耳机": {
+            "pinyin": "ěrjī",
+            "EN": "headphones; earphones",
+            "ES": "auriculares",
+            "vocabularies": ["hello-chinese-1"]
+        },
+        "轻": {
+            "pinyin": "qīng",
+            "EN": "light (not heavy)",
+            "ES": "ligero",
+            "vocabularies": ["hello-chinese-1"]
         }
     }
 }
